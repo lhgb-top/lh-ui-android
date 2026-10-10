@@ -1,4 +1,4 @@
-package com.lh.ui.button
+package top.lhgb.ui.button
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.drawBehind
@@ -32,8 +32,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.lh.ui.theme.LhThemeColors
-import com.lh.ui.tokens.LhTokens
+import top.lhgb.ui.theme.LhThemeColors
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 图标名 → Material 图标的本地映射（spec：icon 是图标名，各端按本地图标体系渲染）。

@@ -1,4 +1,4 @@
-package com.lh.ui.button
+package top.lhgb.ui.button
 
 /**
  * 按钮类型。枚举值与 `lh-ui-core/specs/button.json` 的 prop `type` 逐字对齐（R-n5）。

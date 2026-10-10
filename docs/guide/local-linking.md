@@ -37,7 +37,7 @@ pnpm verify                     # schema + 引用 + WCAG 对比度 + 契约一�
 
 # 3. 回本仓同步
 cd ../lh-ui-android
-pnpm link:tokens                # 覆盖 core/src/main/kotlin/com/lh/ui/tokens/
+pnpm link:tokens                # 覆盖 core/src/main/kotlin/top/lhgb/ui/tokens/
 
 # 4. 回归
 ./gradlew :components:button:test
@@ -51,7 +51,7 @@ pnpm link:tokens:check          # 检测令牌是否已同步（文件数比对�
 
 ## 禁止事项
 
-- ❌ 手改 `core/src/main/kotlin/com/lh/ui/tokens/`（生成物，gitignore）
+- ❌ 手改 `core/src/main/kotlin/top/lhgb/ui/tokens/`（生成物，gitignore）
 - ❌ 把生成的令牌文件提交入库
 - ❌ 在组件里写色值/间距字面量（如 `Color(0xFF2B4C7C)`、`16.dp`、`14.sp`）
 - ❌ 把 `file:` / `link:` 依赖形态写入 `build.gradle.kts` 提交（联调仅限本地）

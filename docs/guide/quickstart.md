@@ -3,9 +3,9 @@
 ## 最小示例
 
 ```kotlin
-import com.lh.ui.button.LhButton
-import com.lh.ui.button.LhButtonType
-import com.lh.ui.theme.LhTheme
+import top.lhgb.ui.button.LhButton
+import top.lhgb.ui.button.LhButtonType
+import top.lhgb.ui.theme.LhTheme
 
 @Composable
 fun Demo() {

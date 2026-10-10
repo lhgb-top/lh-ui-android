@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-  namespace = "com.lh.ui.core"
+  namespace = "top.lhgb.ui.core"
   compileSdk = 35
 
   defaultConfig {

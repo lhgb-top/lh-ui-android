@@ -22,8 +22,9 @@ const PLATFORM = 'android'
 const REPO_ROOT = resolve(import.meta.dirname, '..')
 const CORE_ROOT = resolve(REPO_ROOT, '..', 'lh-ui-core')
 
-/** 令牌产物在本仓源码树中的落点（相对仓根）。android 产物是 com/lh/ui/tokens/*.kt */
-const TOKEN_DEST = resolve(REPO_ROOT, 'core', 'src', 'main', 'kotlin', 'com', 'lh', 'ui', 'tokens')
+/** 令牌产物在本仓源码树中的落点（相对仓根）。android 产物是 top/lhgb/ui/tokens/*.kt
+ * （包名 top.lhgb.ui.tokens，总纲 D20），dist 树直接拷入 Kotlin 源根 */
+const TOKEN_DEST = resolve(REPO_ROOT, 'core', 'src', 'main', 'kotlin')
 
 /**
  * 解析令牌产物来源。

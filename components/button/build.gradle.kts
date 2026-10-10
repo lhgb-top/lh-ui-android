@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-  namespace = "com.lh.ui.button"
+  namespace = "top.lhgb.ui.button"
   compileSdk = 35
 
   defaultConfig {

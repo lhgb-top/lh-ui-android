@@ -1,9 +1,9 @@
-package com.lh.ui.button
+package top.lhgb.ui.button
 
-import com.lh.ui.theme.DarkLhColors
-import com.lh.ui.theme.LightLhColors
-import com.lh.ui.tokens.LhDarkTokens
-import com.lh.ui.tokens.LhTokens
+import top.lhgb.ui.theme.DarkLhColors
+import top.lhgb.ui.theme.LightLhColors
+import top.lhgb.ui.tokens.LhDarkTokens
+import top.lhgb.ui.tokens.LhTokens
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
@@ -130,7 +130,7 @@ class LhButtonDefaultsTest {
 
   private fun resolve(
     args: LhButtonAppearanceArgs,
-    colors: com.lh.ui.theme.LhColors = light,
+    colors: top.lhgb.ui.theme.LhColors = light,
   ) = LhButtonDefaults.resolve(args.type, args.size, args.disabled, args.loading, args.bgPattern, colors)
 
   /** 测试入参包（仅为可读性，不入库） */

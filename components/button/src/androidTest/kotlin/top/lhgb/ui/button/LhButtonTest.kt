@@ -1,4 +1,4 @@
-package com.lh.ui.button
+package top.lhgb.ui.button
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
@@ -8,7 +8,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.lh.ui.theme.LhTheme
+import top.lhgb.ui.theme.LhTheme
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test

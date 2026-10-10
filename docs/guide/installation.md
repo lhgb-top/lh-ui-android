@@ -25,8 +25,8 @@ dependencyResolutionManagement {
 ```kotlin
 // app/build.gradle.kts
 dependencies {
-  implementation("com.lh.ui:lh-ui-android:0.0.1")
-  implementation("com.lh.ui:tokens:0.0.1") // 令牌包（与 core 同版本）
+  implementation("top.lhgb.ui:lh-ui-android:0.0.1")
+  implementation("top.lhgb.ui:tokens:0.0.1") // 令牌包（与 core 同版本）
 }
 ```
 
@@ -50,7 +50,7 @@ project(":components:button").projectDir = file("../lh-ui-android/components/but
 cd ../lh-ui-core && pnpm codegen   # 生成 dist/android 令牌产物
 cd ../lh-ui-android
 pnpm install                        # 安装构建期工具链
-pnpm link:tokens                    # 同步令牌到 core/src/main/kotlin/com/lh/ui/tokens/
+pnpm link:tokens                    # 同步令牌到 core/src/main/kotlin/top/lhgb/ui/tokens/
 ```
 
 `pnpm link:tokens` 带三级存在性守卫：本地 `../lh-ui-core/dist/android` → npm `@lh-ui/core` 产物 → 报错。

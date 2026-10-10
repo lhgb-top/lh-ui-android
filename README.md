@@ -25,7 +25,7 @@ cd ../lh-ui-core && pnpm codegen   # 生成 dist/android 令牌产物
 cd ../lh-ui-android && pnpm link:tokens
 ```
 
-令牌产物落 `core/src/main/kotlin/com/lh/ui/tokens/`（生成物，gitignore，禁止手改）。
+令牌产物落 `core/src/main/kotlin/top/lhgb/ui/tokens/`（生成物，gitignore，禁止手改）。
 
 ### 2. 使用组件
 

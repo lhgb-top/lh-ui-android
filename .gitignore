@@ -1,5 +1,5 @@
 # 令牌生成物（由 scripts/link-tokens.mjs 从 ../lh-ui-core/dist/android 同步，禁止手改）
-core/src/main/kotlin/com/lh/ui/tokens/
+core/src/main/kotlin/top/lhgb/ui/tokens/
 
 # 文档模拟器令牌（由 scripts/gen-sim-tokens.mjs 生成）
 docs/.vitepress/theme/sim-tokens.css

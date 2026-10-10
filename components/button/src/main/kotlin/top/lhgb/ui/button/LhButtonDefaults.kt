@@ -1,11 +1,11 @@
-package com.lh.ui.button
+package top.lhgb.ui.button
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import com.lh.ui.theme.LhColors
-import com.lh.ui.tokens.LhTokens
+import top.lhgb.ui.theme.LhColors
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 按钮外观解析结果：尺寸 + 颜色 + 状态。由 [resolve] 纯函数产出，

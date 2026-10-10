@@ -1,4 +1,4 @@
-package com.lh.ui.button
+package top.lhgb.ui.button
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.lh.ui.theme.LhTheme
+import top.lhgb.ui.theme.LhTheme
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，

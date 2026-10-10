@@ -9,7 +9,7 @@
 - 本仓是 Android 端 UI 层：**Kotlin + Jetpack Compose 手写 UI**，运行时零 JS、零 TS、零 npm 依赖。
 - 与 web 血脉（`@lh-ui/share` → plus/vue2/react/uniapp）**互相独立、不得关联**（总纲 D13）。本仓不依赖
   `@lh-ui/share`，web 仓也不依赖本仓。视觉一致性靠《设计语言基线.md》人工对齐。
-- 唯一外部令牌来源：core codegen 生成的 `LhTokens` / `LhDarkTokens`（包 `com.lh.ui.tokens`）。
+- 唯一外部令牌来源：core codegen 生成的 `LhTokens` / `LhDarkTokens`（包 `top.lhgb.ui.tokens`）。
 
 ## 二、目录职责
 
@@ -20,7 +20,7 @@ lh-ui-android/
 │   ├── link-tokens.mjs        # 令牌本地连接（三级存在性守卫，D18）
 │   └── gen-sim-tokens.mjs     # 文档模拟器令牌 CSS 生成（D19）
 ├── core/                      # 主题接入层模块
-│   └── src/main/kotlin/com/lh/ui/
+│   └── src/main/kotlin/top/lhgb/ui/
 │       ├── theme/LhTheme.kt   # 明/暗令牌 → CompositionLocal
 │       └── tokens/            # 【生成物，gitignore】link-tokens 同步的 LhTokens/LhDarkTokens
 ├── components/                # 每组件一个 Gradle 模块（对齐 web 五件套精神）
@@ -36,7 +36,7 @@ lh-ui-android/
 
 1. **令牌唯一源**：组件实现禁止出现任何色值 / 间距 / 圆角 / 字号字面量（`Color(0xFF2B4C7C)`、`16.dp`、
    `14.sp` 等），只能引用 `LhTokens.Button.*` / `LhTheme.colors.*`。违例即 drift。
-2. **core 生成的令牌文件禁止手改**：`core/src/main/kotlin/com/lh/ui/tokens/` 是生成物（gitignore），
+2. **core 生成的令牌文件禁止手改**：`core/src/main/kotlin/top/lhgb/ui/tokens/` 是生成物（gitignore），
    改令牌去 `lh-ui-core/tokens/*.json` → `pnpm codegen` → 本仓 `pnpm link:tokens`。
 3. **只生成骨架不生成 UI**：core 不会、也不应生成任何 `@Composable` 实现体；本仓的 Composable 全部手写。
 4. **血脉隔离**：禁止 `import` 任何 `@lh-ui/share` / web 仓符号；本仓不发布到 npm。
@@ -47,17 +47,26 @@ lh-ui-android/
 
 ## 四、令牌消费机制（D18）
 
-core 的 codegen 产物是 `com.lh.ui.tokens.LhTokens`（明）与 `LhDarkTokens`（暗）两个 object。
+core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkTokens`（暗）两个 object。
 
 - **暗色模型是并列对象**：`LhDarkTokens` 只含 `Color` 子对象，尺寸类令牌暗色不覆盖（与
   android/ios/harmony 一致；C 端是宏重定义覆盖，docs 端是浅合并）。主题层据此设计。
 - **本地连接**：`pnpm link:tokens`（脚本带三级守卫：本地 `../lh-ui-core/dist/android` →
   npm `@lh-ui/core/dist/android` → 报错）。禁止把生成的令牌文件提交入库。
 - **回退形态**：家族布局不存在时（CI 单仓 clone），`@lh-ui/core` npm 包的 `files:["dist"]`
-  含四端产物，`pnpm i @lh-ui/core` 后 link 脚本自动回退。Maven 令牌包（`com.lh.ui:tokens`）
+  含四端产物，`pnpm i @lh-ui/core` 后 link 脚本自动回退。Maven 令牌包（`top.lhgb.ui:tokens`）
   在 nM6 打通后作为 Gradle 依赖回退。
 
-## 五、平台 gotcha
+## 五、命名规范（总纲 D20）
+
+- **平台包名一律反域名**：Kotlin package 与 Gradle namespace 为 `top.lhgb.ui.*`
+  （`top.lhgb.ui.core` / `top.lhgb.ui.button` / `top.lhgb.ui.tokens`）；Maven 坐标
+  `top.lhgb.ui:lh-ui-android`、令牌包 `top.lhgb.ui:tokens`。
+- **自有标识符一律 LH 前缀**：类 / 枚举 / 对象 `Lh*`（`LhButton`、`LhButtonType`、`LhColors`），
+  按语言惯例定大小写；第三方符号不加。
+- npm / ohpm 的 `@lh-ui/*` scope 不受此约束。
+
+## 六、平台 gotcha
 
 - **单位**：尺寸 `dp`、字号 `sp`（生成的 `LhTokens` 已带单位，直接用）。暗色对象不含尺寸令牌，
   `LhTheme` 取尺寸时始终走明色对象。
@@ -67,7 +76,7 @@ core 的 codegen 产物是 `com.lh.ui.tokens.LhTokens`（明）与 `LhDarkTokens
 - **字体**：`Typography.fontFamily` 是字体栈字符串，端侧取首个可用族；国风衬线是默认调性。
 - **@Preview** 即文档：`LhButtonPreview.kt` 是组件示例的第一现场，文档站 HTML 模拟器是第二现场。
 
-## 六、命令速查
+## 七、命令速查
 
 | 任务 | 命令 | 说明 |
 | --- | --- | --- |
@@ -80,9 +89,9 @@ core 的 codegen 产物是 `com.lh.ui.tokens.LhTokens`（明）与 `LhDarkTokens
 | 文档构建 | `pnpm docs:build` | 部署前跑，产物在 docs/.vitepress/dist |
 | 类型 | `./gradlew :components:button:compileDebugKotlin` | Kotlin 编译即类型检查 |
 
-## 七、Read before touching sensitive areas
+## 八、Read before touching sensitive areas
 
-- 改 `LhTheme.kt`：先读 core 的 `dist/android/com/lh/ui/tokens/LhDarkTokens.kt`，确认暗色覆盖范围
+- 改 `LhTheme.kt`：先读 core 的 `dist/android/top/lhgb/ui/tokens/LhDarkTokens.kt`，确认暗色覆盖范围
   （只 Color，不含尺寸），否则主题层取尺寸会拿到 null。
 - 改 `LhButtonDefaults.kt`：先读 `../../lh-ui-core/specs/button.json` 的 behaviors 与 tokenRefs，
   令牌绑定必须逐条对齐；黄金用例（`cases/button.json`）会断言这些映射。
