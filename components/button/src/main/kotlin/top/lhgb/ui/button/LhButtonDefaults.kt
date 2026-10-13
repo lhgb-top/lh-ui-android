@@ -105,6 +105,8 @@ object LhButtonDefaults {
     return LhButtonAppearance(
       height = height,
       paddingHorizontal = paddingHorizontal,
+      fontSize = fontSize,
+      iconSize = iconSize,
       containerColor = container,
       contentColor = content,
       borderColor = border,

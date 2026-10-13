@@ -72,6 +72,28 @@ LhTheme(isDark = isDark) {
 }
 ```
 
+## 原生文档模块
+
+除本网页文档外，仓内还有一套**安卓原生文档模块**（`:docsui`）：文档页 1:1 对齐本站结构，但预览是**真 Compose 实时渲染、可交互**的（按钮可点、输入可打字、弹窗能弹出），而非静态 HTML 模拟。
+
+**拖入即用**：任意安卓工程依赖后，一行 `LhDocs.launch(context)` 即可打开完整文档（14 组件页 + 5 指南页 + 明暗切换 + 实时预览）：
+
+```kotlin
+// build.gradle.kts
+implementation(project(":docsui"))  // 或 Maven 坐标 top.lhgb.ui:docsui
+
+// 任意入口（如「组件文档」按钮的点击回调）
+LhDocs.launch(context)
+```
+
+库的 manifest 自动合并一个 `exported = false` 的 `LhDocsActivity`，不给宿主注入启动器图标。
+
+**独立打包**：`:docsapp` 是极薄的 application 模块（只有一个 Activity），单独打包即得「lh-ui 文档」APP：
+
+```bash
+./gradlew :docsapp:installDebug
+```
+
 ## 组件示例预览
 
 原生 UI 无法在浏览器实时渲染，本站用**内联静态 HTML 手机框模拟器**展示外观：
@@ -90,8 +112,8 @@ LhTheme(isDark = isDark) {
     <div class="sim-row">
       <button class="sim-btn sim-btn--small">小型</button>
       <button class="sim-btn sim-btn--primary sim-btn--large">大型</button>
-      <button class="sim-btn sim-btn--primary sim-btn--disabled">禁用</button>
-      <button class="sim-btn sim-btn--primary sim-btn--loading">
+      <button class="sim-btn sim-btn--primary sim-btn--disabled" disabled>禁用</button>
+      <button class="sim-btn sim-btn--primary sim-btn--loading" disabled>
         <span class="sim-btn__spinner"></span>加载中
       </button>
     </div>

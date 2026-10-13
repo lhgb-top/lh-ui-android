@@ -57,13 +57,13 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
   <div class="sim-screen">
     <div class="sim-row">
       <button class="sim-btn sim-btn--primary">正常</button>
-      <button class="sim-btn sim-btn--primary sim-btn--disabled">禁用</button>
+      <button class="sim-btn sim-btn--primary sim-btn--disabled" disabled>禁用</button>
     </div>
     <div class="sim-row">
-      <button class="sim-btn sim-btn--primary sim-btn--loading">
+      <button class="sim-btn sim-btn--primary sim-btn--loading" disabled>
         <span class="sim-btn__spinner"></span>加载中
       </button>
-      <button class="sim-btn sim-btn--primary sim-btn--disabled">禁用优先</button>
+      <button class="sim-btn sim-btn--primary sim-btn--disabled" disabled>禁用优先</button>
     </div>
   </div>
 </div>
@@ -101,7 +101,7 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
       <button class="sim-btn">默认按钮</button>
     </div>
     <div class="sim-row">
-      <button class="sim-btn sim-btn--primary sim-btn--disabled">禁用</button>
+      <button class="sim-btn sim-btn--primary sim-btn--disabled" disabled>禁用</button>
       <button class="sim-btn sim-btn--success">成功</button>
     </div>
   </div>
@@ -115,6 +115,7 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `onClick` | 点击回调；`disabled` 或 `loading` 为 true 时不触发 | `() -> Unit` | — |
+| `modifier` | 修饰符 | `Modifier` | `Modifier` |
 | `type` | 按钮类型，决定底色与文字色 | `LhButtonType` | `Default` |
 | `size` | 按钮尺寸，映射到尺寸令牌 | `LhButtonSize` | `Medium` |
 | `disabled` | 是否禁用 | `Boolean` | `false` |
@@ -178,6 +179,7 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
 | `primary-type-uses-primary-tokens` | 主色类型消费主色令牌 | `LhButtonDefaultsTest.primary_type_uses_primary_tokens` |
 | `small-size-uses-small-tokens` | 小号消费 small 尺寸令牌 | `LhButtonDefaultsTest.small_size_uses_small_tokens` |
 | `bgpattern-uses-decoration-token` | 花纹底消费装饰色 | `LhButtonDefaultsTest.bgPattern_uses_decoration_token` |
+| `icon-renders-icon-command` | 已登记图标名渲染矢量；未登记名不绘制 | `LhButtonDefaultsTest.icon_renders_registered_vector` + `unknown_icon_name_resolves_to_null` |
 
 ```bash
 ./gradlew :components:button:test                        # JVM 部分

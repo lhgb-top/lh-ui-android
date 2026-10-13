@@ -7,7 +7,7 @@
 ```
                         ┌── web 血脉：share（TS core + SCSS）→ plus / vue2 / react / uniapp
 lh-ui 家族（同品牌）─────┤
-                        └── 原生血脉：core（JSON 令牌 + 契约 + codegen）→ android / ios / harmony / c
+                        └── 原生血脉：core（JSON 令牌 + 契约 + codegen）→ android / ios / harmony / windows
                                                                     ↑ 本仓
 ```
 
@@ -27,5 +27,5 @@ lh-ui 家族（同品牌）─────┤
 
 ## 当前状态
 
-- **button 全链路打样已交付**（令牌消费 + 外观解析 + Compose UI + JVM 单测 + Compose UI Test + `@Preview` + 文档站）
-- P0 其余 13 个组件（icon / input / textarea / cell / checkbox / radio / switch / tag / dialog / toast / loading / picker / navbar）按同范式后续补齐
+- **P0 全部 14 个组件已交付**（button / icon / tag / loading / cell / input / textarea / checkbox / radio / switch / dialog / toast / picker / navbar），每个组件都是同范式全链路：令牌消费 + 外观解析 + Compose UI + JVM 单测 + Compose UI Test + `@Preview` + 文档页。
+- **原生文档模块 `:docsui` 已交付**：拖入即用（`LhDocs.launch(context)`）+ 独立打包（`:docsapp`），预览为真 Compose 实时渲染、可交互，见[快速开始](./quickstart)。

@@ -25,6 +25,8 @@ const CORE_ROOT = resolve(REPO_ROOT, '..', 'lh-ui-core')
 /** 令牌产物在本仓源码树中的落点（相对仓根）。android 产物是 top/lhgb/ui/tokens/*.kt
  * （包名 top.lhgb.ui.tokens，总纲 D20），dist 树直接拷入 Kotlin 源根 */
 const TOKEN_DEST = resolve(REPO_ROOT, 'core', 'src', 'main', 'kotlin')
+/** 令牌在源根内的实际落点。源根还存放手写代码（theme 层等），清理与校验都只针对此子目录 */
+const TOKEN_SUBDIR = resolve(TOKEN_DEST, 'top', 'lhgb', 'ui', 'tokens')
 
 /**
  * 解析令牌产物来源。
@@ -40,9 +42,10 @@ function resolveTokenSource() {
   return null
 }
 
-/** 清空落点目录（生成物全量覆盖，避免残留旧令牌） */
+/** 清空令牌落点子目录（生成物全量覆盖，避免残留旧令牌）。
+ * 只删 top/lhgb/ui/tokens/，保留源根下的手写代码（theme 层等）。 */
 function cleanDest() {
-  rmSync(TOKEN_DEST, { recursive: true, force: true })
+  rmSync(TOKEN_SUBDIR, { recursive: true, force: true })
 }
 
 /** 统计目录内文件数（递归） */
@@ -74,10 +77,11 @@ function main() {
   const mode = isLocal ? '本地直连（../lh-ui-core/dist）' : 'npm 产物回退（@lh-ui/core）'
 
   if (checkOnly) {
-    const current = existsSync(TOKEN_DEST) ? countFiles(TOKEN_DEST) : 0
+    const current = existsSync(TOKEN_SUBDIR) ? countFiles(TOKEN_SUBDIR) : 0
     const expected = countFiles(source)
     if (current !== expected) {
       console.error(`❌ 令牌未同步：落点 ${current} 个文件，来源 ${expected} 个（来源：${mode}）`)
+      console.error(`   落点：${TOKEN_SUBDIR}`)
       process.exitCode = 1
       return
     }

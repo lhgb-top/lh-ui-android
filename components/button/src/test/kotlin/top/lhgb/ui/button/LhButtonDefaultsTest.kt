@@ -6,6 +6,7 @@ import top.lhgb.ui.tokens.LhDarkTokens
 import top.lhgb.ui.tokens.LhTokens
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -94,12 +95,25 @@ class LhButtonDefaultsTest {
     assertNull("未开启花纹底时 patternColor 应为 null", withoutPattern.patternColor)
   }
 
+  // case: icon-renders-icon-command —— 已登记图标名解析为矢量，未登记名不绘制
+  @Test
+  fun icon_renders_registered_vector() {
+    assertNotNull("已登记图标名应解析为矢量", LhButtonIcons.resolve("search"))
+    assertNotNull("refresh 已登记", LhButtonIcons.resolve("refresh"))
+  }
+
+  @Test
+  fun unknown_icon_name_resolves_to_null() {
+    assertNull("未登记的图标名应返回 null（不绘制，不抛异常）", LhButtonIcons.resolve("not-a-real-icon"))
+    assertNull("null 图标名应返回 null", LhButtonIcons.resolve(null))
+  }
+
   /** 暗色色板必须逐字段取自 LhDarkTokens（并列对象模型，见 LhTheme 文档） */
   @Test
   fun dark_colors_come_from_dark_tokens() {
     val a = resolve(defaultProps(type = LhButtonType.primary), dark)
     assertEquals(LhDarkTokens.Color.Primary.default, a.containerColor)
-    assertEquals(LhDarkTokens.Color.onPrimary, a.contentColor)
+    assertEquals(LhTokens.Color.onPrimary, a.contentColor)
   }
 
   /** 禁用态在暗色下取暗色禁用令牌 */

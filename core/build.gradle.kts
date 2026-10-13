@@ -27,12 +27,12 @@ android {
   kotlinOptions {
     jvmTarget = "11"
   }
-}
 
-// 令牌源集：com/lh/ui/tokens/ 由 scripts/link-tokens.mjs 从 ../lh-ui-core/dist/android
-// 同步（生成物，gitignore）。家族布局不存在时回退 Maven 令牌包（nM6 打通后）。
-sourceSets {
-  getByName("main").java.srcDirs("src/main/kotlin")
+  // 令牌源集：top/lhgb/ui/tokens/ 由 scripts/link-tokens.mjs 从 ../lh-ui-core/dist/android
+  // 同步（生成物，gitignore）。家族布局不存在时回退 Maven 令牌包（nM6 打通后）。
+  sourceSets {
+    getByName("main").java.srcDirs("src/main/kotlin")
+  }
 }
 
 dependencies {

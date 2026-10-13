@@ -1,7 +1,6 @@
 package top.lhgb.ui.button
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.drawBehind
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,12 +16,15 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -31,7 +33,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhThemeColors
 import top.lhgb.ui.tokens.LhTokens
 
@@ -91,6 +92,8 @@ fun LhButton(
       .clip(shape)
       .drawBehind {
         // 花纹底纹（先画，垫在底色之下，不影响文字对比度）
+        // 注意：lambda 内的 size 会被外层 LhButton 的 size 参数（LhButtonSize）遮蔽，
+        // 必须用 this.size 显式取 DrawScope 的画布尺寸。
         if (appearance.patternColor != null) {
           val step = LhTokens.Spacing.base.toPx()
           val patternBrush = Brush.linearGradient(
@@ -98,13 +101,15 @@ fun LhButton(
             start = Offset(0f, 0f),
             end = Offset(step, step),
           )
-          var x = -size.height.toFloat()
-          while (x < size.width.toFloat()) {
+          val canvasW = this.size.width
+          val canvasH = this.size.height
+          var x = -canvasH
+          while (x < canvasW) {
             drawLine(
               brush = patternBrush,
               start = Offset(x, 0f),
-              end = Offset(x + size.height.toFloat(), size.height.toFloat()),
-              strokeWidth = 1.dp.toPx(),
+              end = Offset(x + canvasH, canvasH),
+              strokeWidth = LhTokens.Button.borderWidth.toPx(),
             )
             x += step
           }
@@ -142,7 +147,7 @@ fun LhButton(
       if (loading) {
         CircularProgressIndicator(
           modifier = Modifier.size(appearance.iconSize),
-          strokeWidth = 2.dp,
+          strokeWidth = LhTokens.Loading.strokeWidth,
           color = appearance.contentColor,
         )
       } else if (resolvedIcon != null) {
@@ -153,7 +158,9 @@ fun LhButton(
           tint = appearance.contentColor,
         )
       }
-      content()
+      CompositionLocalProvider(LocalTextStyle provides LocalTextStyle.current.copy(fontSize = appearance.fontSize)) {
+        content()
+      }
     }
   }
 }

@@ -5,7 +5,7 @@
 
 ## 一、定位与血脉
 
-- **原生血脉**：`lh-ui-core`（JSON 令牌 + 契约 + 黄金用例 + codegen）→ android / ios / harmony / c。
+- **原生血脉**：`lh-ui-core`（JSON 令牌 + 契约 + 黄金用例 + codegen）→ android / ios / harmony / windows。
 - 本仓是 Android 端 UI 层：**Kotlin + Jetpack Compose 手写 UI**，运行时零 JS、零 TS、零 npm 依赖。
 - 与 web 血脉（`@lh-ui/share` → plus/vue2/react/uniapp）**互相独立、不得关联**（总纲 D13）。本仓不依赖
   `@lh-ui/share`，web 仓也不依赖本仓。视觉一致性靠《设计语言基线.md》人工对齐。
@@ -28,9 +28,25 @@ lh-ui-android/
 │       ├── src/main/.../button/{LhButton,LhButtonDefaults,LhButtonType,LhButtonSize,LhButtonPreview}.kt
 │       ├── src/test/.../button/LhButtonDefaultsTest.kt       # JVM JUnit（黄金用例：token 映射 + gate）
 │       └── src/androidTest/.../button/LhButtonTest.kt         # Compose UI Test（点击断言，需设备）
-├── docs/                      # VitePress 文档站（内联静态 HTML 模拟器，D19）
+├── docsui/                    # 【原生文档库】拖入即用：LhDocs.launch(context) 打开全部文档
+│   └── src/main/kotlin/top/lhgb/ui/docs/
+│       ├── LhDocs.kt          # 公共 API（launch）
+│       ├── LhDocsActivity.kt  # 入口 Activity（manifest 合并到宿主，exported=false）
+│       ├── LhDocsHost.kt      # 导航宿主：返回栈 + LhNavbar 顶栏 + 暗色切换 + 全局 Toast
+│       ├── DocRegistry.kt     # 页面注册表（数据驱动，新增组件只加一条）
+│       ├── model/             # DocEntry / DocSection / DocRow / DocTable 数据类
+│       ├── widgets/           # DocHeading / DocProse / DocTable / DocCodeBlock / DocPreviewFrame
+│       ├── pages/             # 首页 + 14 组件页 + 5 指南页（由 scripts/gen-doc-pages.py 从 docs/*.md 生成）
+│       └── previews/          # 33 个真 Compose 可交互预览（替代网页 HTML 模拟器，手写）
+├── docsapp/                   # 【独立文档 APP】极薄 application 模块，一个 LAUNCHER Activity
+├── docs/                      # VitePress 文档站（内联静态 HTML 模拟器，D19；docsui 的内容真源）
 └── package.json               # 构建期工具脚本入口（非运行时）
 ```
+
+> 原生文档模块（`:docsui` / `:docsapp`）与网页文档站（`docs/`）同源：组件页结构 1:1 对齐
+> `docs/components/*.md`，内容由 `scripts/gen-doc-pages.py` 解析 md 生成 `DocEntry` 数据。
+> **改文档先改 md，再跑 `python scripts/gen-doc-pages.py`**；预览（真 Compose 交互）手写在
+> `docsui/.../previews/`，脚本按 section 标题映射引用。
 
 ## 三、红线
 
@@ -49,22 +65,23 @@ lh-ui-android/
 
 core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkTokens`（暗）两个 object。
 
-- **暗色模型是并列对象**：`LhDarkTokens` 只含 `Color` 子对象，尺寸类令牌暗色不覆盖（与
-  android/ios/harmony 一致；C 端是宏重定义覆盖，docs 端是浅合并）。主题层据此设计。
+- **暗色模型是并列对象**：`LhDarkTokens` 只含 `Color` 子对象，尺寸类令牌暗色不覆盖（四端
+  android / ios / harmony / windows 一致；docs 端是浅合并）。主题层据此设计。
 - **本地连接**：`pnpm link:tokens`（脚本带三级守卫：本地 `../lh-ui-core/dist/android` →
   npm `@lh-ui/core/dist/android` → 报错）。禁止把生成的令牌文件提交入库。
 - **回退形态**：家族布局不存在时（CI 单仓 clone），`@lh-ui/core` npm 包的 `files:["dist"]`
-  含四端产物，`pnpm i @lh-ui/core` 后 link 脚本自动回退。Maven 令牌包（`top.lhgb.ui:tokens`）
-  在 nM6 打通后作为 Gradle 依赖回退。
+  含四端产物，`pnpm i @lh-ui/core` 后 link 脚本自动回退。Maven 侧令牌随主包
+  `top.lhgb.ui:android` 分发（D22 单坐标，不再单独发令牌包）。
 
-## 五、命名规范（总纲 D20）
+## 五、命名规范（总纲 D20 + D22）
 
 - **平台包名一律反域名**：Kotlin package 与 Gradle namespace 为 `top.lhgb.ui.*`
-  （`top.lhgb.ui.core` / `top.lhgb.ui.button` / `top.lhgb.ui.tokens`）；Maven 坐标
-  `top.lhgb.ui:lh-ui-android`、令牌包 `top.lhgb.ui:tokens`。
+  （`top.lhgb.ui.core` / `top.lhgb.ui.button` / `top.lhgb.ui.tokens`——这是**代码包名**，
+  与发包名解耦）。Maven 发包坐标为 `top.lhgb.ui:android`（D22：groupId `top.lhgb.ui` +
+  平台名 artifactId，组件与令牌全部并入单坐标）。
 - **自有标识符一律 LH 前缀**：类 / 枚举 / 对象 `Lh*`（`LhButton`、`LhButtonType`、`LhColors`），
   按语言惯例定大小写；第三方符号不加。
-- npm / ohpm 的 `@lh-ui/*` scope 不受此约束。
+- npm 的 `@lh-ui/*` scope 不受此约束（组织已建，npm 不使用反域名）。
 
 ## 六、平台 gotcha
 
@@ -87,6 +104,9 @@ core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkToke
 | 构建 | `./gradlew :components:button:build` | 产出 AAR |
 | 文档 dev | `pnpm docs:dev` | 先 gen:sim 再起 VitePress（端口 5181） |
 | 文档构建 | `pnpm docs:build` | 部署前跑，产物在 docs/.vitepress/dist |
+| 原生文档页同步 | `python scripts/gen-doc-pages.py` | 改 docs/*.md 后跑，重新生成 docsui 的 DocEntry 数据 |
+| 原生文档库编译 | `./gradlew :docsui:compileDebugKotlin` | |
+| 文档 APP 打包/装机 | `./gradlew :docsapp:installDebug` | 独立分发的「lh-ui 文档」APP |
 | 类型 | `./gradlew :components:button:compileDebugKotlin` | Kotlin 编译即类型检查 |
 
 ## 八、Read before touching sensitive areas
@@ -98,4 +118,8 @@ core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkToke
 - 改 `scripts/*.mjs`：守卫逻辑改动影响四仓统一机制，先读 core 的
   `scripts/resolve-local-tokens.mjs` 与总纲 D18。
 - 加新组件：先在 core 仓写 `specs/<comp>.json` + `cases/<comp>.json`（codegen 不生成 UI），
-  再本仓建 `components/<comp>` 模块，翻译黄金用例为 `src/test` + `src/androidTest`。
+  再本仓建 `components/<comp>` 模块，翻译黄金用例为 `src/test` + `src/androidTest`；
+  然后写 `docs/components/<comp>.md`（网页文档），跑 `python scripts/gen-doc-pages.py`
+  同步原生文档页，并在 `DocRegistry` + `docsui/.../previews/` 补该组件的注册条与可交互预览。
+- 改 `docsui` 的文档内容：内容是 `docs/*.md` 的生成物（见二节注），**禁止手改 `pages/*Doc.kt`**，
+  只能手写 `previews/` 里的可交互预览 composable。

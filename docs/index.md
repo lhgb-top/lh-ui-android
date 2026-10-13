@@ -17,7 +17,7 @@ features:
   - title: 令牌驱动
     details: 组件零硬编码色值与间距，全部消费 core codegen 生成的 LhTokens / LhDarkTokens，改令牌全端即时生效。
   - title: 契约一致
-    details: props 命名与 lh-ui-core/specs 逐字对齐，与 iOS / 鸿蒙 / C 端及 web 血脉行为共享。
+    details: props 命名与 lh-ui-core/specs 逐字对齐，与 iOS / 鸿蒙 / Windows 及 web 血脉行为共享。
   - title: 黄金用例守护
     details: cases/button.json 的行为断言翻译为 JVM JUnit 与 Compose UI Test，CI 跑同一批断言。
   - title: 明暗双主题

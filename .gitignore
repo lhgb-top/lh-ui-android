@@ -4,12 +4,22 @@ core/src/main/kotlin/top/lhgb/ui/tokens/
 # 文档模拟器令牌（由 scripts/gen-sim-tokens.mjs 生成）
 docs/.vitepress/theme/sim-tokens.css
 
+# 文档构建产物与缓存
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# 回归测试截图证据（浏览器走查产出，按需保留）
+docs/.regression/
+
 # 构建产物
 build/
 .gradle/
+.kotlin/
 local.properties
 *.apk
 *.aar
+*.hprof
+*.log
 
 # node
 node_modules/
@@ -19,3 +29,4 @@ node_modules/
 .idea/
 *.iml
 .DS_Store
+.zcode/

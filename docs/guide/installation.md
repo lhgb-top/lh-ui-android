@@ -9,7 +9,7 @@
 
 ## 引入依赖
 
-### Maven（nM6 发包链路打通后）
+### Maven（发包链路打通后）
 
 ```kotlin
 // settings.gradle.kts
@@ -17,7 +17,7 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
-    maven("https://maven.pkg.github.com/lhgb/lh-ui") // 家族 Maven 仓
+    maven("https://maven.pkg.github.com/lhgb-top/lh-ui-android") // 家族 Maven 仓（过渡 / 内网）
   }
 }
 ```
@@ -25,8 +25,7 @@ dependencyResolutionManagement {
 ```kotlin
 // app/build.gradle.kts
 dependencies {
-  implementation("top.lhgb.ui:lh-ui-android:0.0.1")
-  implementation("top.lhgb.ui:tokens:0.0.1") // 令牌包（与 core 同版本）
+  implementation("top.lhgb.ui:android:0.0.1") // D22 单坐标：组件 + 令牌全在内
 }
 ```
 

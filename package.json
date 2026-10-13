@@ -4,6 +4,16 @@
   "private": true,
   "type": "module",
   "description": "lh-ui 原生血脉 Android 端：Kotlin + Jetpack Compose UI 库（构建期工具脚本，非运行时）",
+  "license": "Apache-2.0",
+  "author": "lhgb <i@lhgb.top>",
+  "homepage": "https://www.lhgb.top/lhui/android/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhgb-top/lh-ui-android.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lhgb-top/lh-ui-android/issues"
+  },
   "engines": {
     "node": ">=20"
   },
@@ -16,10 +26,12 @@
     "docs:build": "pnpm gen:sim && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "changeset": "changeset",
-    "changeset:version": "changeset version"
+    "changeset:version": "changeset version && node scripts/sync-version.mjs",
+    "release:push": "node scripts/push-release.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
+    "vite": "^5.4.21",
     "vitepress": "^1.6.4",
     "vue": "^3.5.13"
   },
