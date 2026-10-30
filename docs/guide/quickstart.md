@@ -12,7 +12,7 @@ fun Demo() {
   LhTheme {
     LhButton(
       type = LhButtonType.Primary,
-      onClick = { /* 处理点击 */ },
+      lhOnClick = { /* 处理点击 */ },
     ) {
       Text("主要按钮")
     }
@@ -26,40 +26,40 @@ fun Demo() {
 
 ```kotlin
 // 六种类型
-LhButton(type = LhButtonType.Default, onClick = {}) { Text("默认") }
-LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要") }
-LhButton(type = LhButtonType.Success, onClick = {}) { Text("成功") }
-LhButton(type = LhButtonType.Warning, onClick = {}) { Text("警告") }
-LhButton(type = LhButtonType.Danger, onClick = {}) { Text("危险") }
-LhButton(type = LhButtonType.Info, onClick = {}) { Text("信息") }
+LhButton(type = LhButtonType.Default, lhOnClick = {}) { Text("默认") }
+LhButton(type = LhButtonType.Primary, lhOnClick = {}) { Text("主要") }
+LhButton(type = LhButtonType.Success, lhOnClick = {}) { Text("成功") }
+LhButton(type = LhButtonType.Warning, lhOnClick = {}) { Text("警告") }
+LhButton(type = LhButtonType.Danger, lhOnClick = {}) { Text("危险") }
+LhButton(type = LhButtonType.Info, lhOnClick = {}) { Text("信息") }
 
 // 三种尺寸
-LhButton(size = LhButtonSize.Small, onClick = {}) { Text("小型") }
-LhButton(size = LhButtonSize.Medium, onClick = {}) { Text("中型") }
-LhButton(size = LhButtonSize.Large, onClick = {}) { Text("大型") }
+LhButton(lhSize = LhButtonSize.Small, lhOnClick = {}) { Text("小型") }
+LhButton(lhSize = LhButtonSize.Medium, lhOnClick = {}) { Text("中型") }
+LhButton(lhSize = LhButtonSize.Large, lhOnClick = {}) { Text("大型") }
 ```
 
 ## 状态
 
 ```kotlin
 // 禁用：不响应点击，呈现禁用样式
-LhButton(disabled = true, onClick = {}) { Text("禁用") }
+LhButton(disabled = true, lhOnClick = {}) { Text("禁用") }
 
-// 加载中：显示指示器，不触发 onClick
-LhButton(loading = true, onClick = {}) { Text("加载中") }
+// 加载中：显示指示器，不触发 lhOnClick
+LhButton(loading = true, lhOnClick = {}) { Text("加载中") }
 
 // 两者共存：按禁用优先处理（黄金用例 disabled-precedes-loading）
-LhButton(disabled = true, loading = true, onClick = {}) { Text("禁用优先") }
+LhButton(disabled = true, loading = true, lhOnClick = {}) { Text("禁用优先") }
 ```
 
 ## 图标与花纹底
 
 ```kotlin
 // 图标名按本地图标体系解析（见 LhButtonIcons，未登记名不绘制）
-LhButton(type = LhButtonType.Primary, icon = "search", onClick = {}) { Text("搜索") }
+LhButton(type = LhButtonType.Primary, icon = "search", lhOnClick = {}) { Text("搜索") }
 
 // 国风花纹底纹（消费 color.decoration 令牌）
-LhButton(type = LhButtonType.Primary, bgPattern = true, onClick = {}) { Text("花纹底") }
+LhButton(type = LhButtonType.Primary, bgPattern = true, lhOnClick = {}) { Text("花纹底") }
 ```
 
 ## 明暗主题

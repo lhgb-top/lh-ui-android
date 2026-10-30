@@ -63,7 +63,7 @@ LhTextarea(
 | `readonly` | 是否只读 | `Boolean` | `false` |
 | `showCount` | 是否显示字数统计 | `Boolean` | `false` |
 | `maxlength` | 最大长度（超长截断） | `Int` | `Int.MAX_VALUE` |
-| `onFocus` / `onBlur` | 聚焦 / 失焦回调 | `(() -> Unit)?` | `null` |
+| `lhOnFocus` / `lhOnBlur` | 聚焦 / 失焦回调 | `(() -> Unit)?` | `null` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 
 ## 令牌对照

@@ -23,7 +23,7 @@
 <p class="sim-note">HTML 模拟预览（Android / Compose 外观），非真机渲染</p>
 
 ```kotlin
-LhLoading(size = LhLoadingSize.large, tone = LhLoadingTone.primary)
+LhLoading(lhSize = LhLoadingSize.large, tone = LhLoadingTone.primary)
 ```
 
 ## API
@@ -32,7 +32,7 @@ LhLoading(size = LhLoadingSize.large, tone = LhLoadingTone.primary)
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `size` | 指示器直径 | `LhLoadingSize` | `Medium` |
+| `lhSize` | 指示器直径 | `LhLoadingSize` | `Medium` |
 | `tone` | 环色 | `LhLoadingTone` | `Primary` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 

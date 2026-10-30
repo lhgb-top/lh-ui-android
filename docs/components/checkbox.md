@@ -62,7 +62,7 @@ LhCheckbox(
 | `indeterminate` | 是否半选（不确定态） | `Boolean` | `false` |
 | `disabled` | 是否禁用 | `Boolean` | `false` |
 | `label` | 标签文字 | `String?` | `null` |
-| `size` | 方框尺寸 | `LhCheckboxSize` | `Medium` |
+| `lhSize` | 方框尺寸 | `LhCheckboxSize` | `Medium` |
 | `labelContent` | 标签内容（覆盖 label，spec 的 default 插槽） | `@Composable (() -> Unit)?` | `null` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 

@@ -21,7 +21,7 @@ toast 是**自持状态机**：状态由 `LhToastState` 承载，宿主调用 `s
 ```kotlin
 val state = rememberLhToastState(onClose = { /* 可选：记录关闭 */ })
 Column {
-  LhButton(onClick = { state.show("已保存") }) { Text("触发") }
+  LhButton(lhOnClick = { state.show("已保存") }) { Text("触发") }
   LhToast(state = state)
 }
 ```
@@ -43,7 +43,7 @@ Column {
 
 ## 定位
 
-`position` 取 `top` / `center` / `bottom`，两端各留 `spacing.xl` 边距；宽度由文字测量得出并封顶可用宽度的 80%。
+`lhPosition` 取 `top` / `center` / `bottom`，两端各留 `spacing.xl` 边距；宽度由文字测量得出并封顶可用宽度的 80%。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Toast 定位</span></div>
@@ -62,7 +62,7 @@ Column {
 | --- | --- | --- | --- |
 | `state` | 轻提示状态机（承载可见性、文字与计时） | `LhToastState` | — |
 | `type` | 语义类型；非 default 时绘制语义色圆点 | `LhToastType` | `default` |
-| `position` | 在可用区域内的定位 | `LhToastPosition` | `center` |
+| `lhPosition` | 在可用区域内的定位 | `LhToastPosition` | `center` |
 | `modifier` | 修饰符（作用于胶囊） | `Modifier` | `Modifier` |
 
 ### LhToastState

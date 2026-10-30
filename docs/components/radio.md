@@ -59,7 +59,7 @@ listOf("选项一" to "a", "选项二" to "b").forEach { (text, value) ->
 | `disabled` | 是否禁用 | `Boolean` | `false` |
 | `label` | 标签文字 | `String?` | `null` |
 | `value` | 单选值（组内标识，组件本身不含组逻辑） | `String?` | `null` |
-| `size` | 圆环尺寸 | `LhRadioSize` | `Medium` |
+| `lhSize` | 圆环尺寸 | `LhRadioSize` | `Medium` |
 | `labelContent` | 标签内容（覆盖 label，spec 的 default 插槽） | `@Composable (() -> Unit)?` | `null` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 

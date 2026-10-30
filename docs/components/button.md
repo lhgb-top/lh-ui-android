@@ -29,7 +29,7 @@
 <p class="sim-note">HTML 模拟预览（Android / Compose 外观），非真机渲染</p>
 
 ```kotlin
-LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
+LhButton(type = LhButtonType.Primary, lhOnClick = {}) { Text("主要按钮") }
 ```
 
 ## 尺寸
@@ -50,7 +50,7 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
 
 ## 状态
 
-禁用与加载中都不触发 `onClick`；两者共存时按**禁用优先**处理（黄金用例 `disabled-precedes-loading`）。
+禁用与加载中都不触发 `lhOnClick`；两者共存时按**禁用优先**处理（黄金用例 `disabled-precedes-loading`）。
 
 <div class="sim-phone">
   <div class="sim-statusbar"><span>9:41</span><span>Button 状态</span></div>
@@ -114,12 +114,12 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `onClick` | 点击回调；`disabled` 或 `loading` 为 true 时不触发 | `() -> Unit` | — |
+| `lhOnClick` | 点击回调；`disabled` 或 `loading` 为 true 时不触发 | `() -> Unit` | — |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 | `type` | 按钮类型，决定底色与文字色 | `LhButtonType` | `Default` |
-| `size` | 按钮尺寸，映射到尺寸令牌 | `LhButtonSize` | `Medium` |
+| `lhSize` | 按钮尺寸，映射到尺寸令牌 | `LhButtonSize` | `Medium` |
 | `disabled` | 是否禁用 | `Boolean` | `false` |
-| `loading` | 是否加载中（显示指示器，不触发 onClick） | `Boolean` | `false` |
+| `loading` | 是否加载中（显示指示器，不触发 lhOnClick） | `Boolean` | `false` |
 | `icon` | 图标名（本地图标体系解析） | `String?` | `null` |
 | `bgPattern` | 是否绘制国风花纹底纹 | `Boolean` | `false` |
 | `content` | 按钮文字内容（spec 的 default 插槽） | `@Composable () -> Unit` | — |
@@ -171,7 +171,7 @@ LhButton(type = LhButtonType.Primary, onClick = {}) { Text("主要按钮") }
 
 | case id | 断言 | 本地测试 |
 | --- | --- | --- |
-| `click-emits-onclick` | 点击触发 onClick ×1 | `LhButtonTest.click_emits_onClick`（Compose UI Test） |
+| `click-emits-onclick` | 点击触发 lhOnClick ×1 | `LhButtonTest.click_emits_onClick`（Compose UI Test） |
 | `disabled-blocks-click` | 禁用态不触发 | `LhButtonTest.disabled_blocks_click` |
 | `loading-blocks-click` | 加载态不触发 | `LhButtonTest.loading_blocks_click` |
 | `disabled-precedes-loading` | 禁用优先 | `LhButtonTest.disabled_precedes_loading_blocks_click` + `LhButtonDefaultsTest.disabled_precedes_loading` |

@@ -35,7 +35,7 @@ LhCell(
   label = "描述文字",
   value = "值",
   isLink = true,
-  onClick = { /* 跳转 */ },
+  lhOnClick = { /* 跳转 */ },
 )
 ```
 
@@ -72,11 +72,11 @@ LhCell(
 | `clickable` | 是否可点击；为 true 时显示右侧指示箭头并响应点击 | `Boolean` | `false` |
 | `required` | 是否在标题前显示必填红星（`color.danger.default`） | `Boolean` | `false` |
 | `icon` | 左侧图标名（本地图标体系）；空时不绘制 | `String?` | `null` |
-| `onClick` | 点击回调；`clickable` 为 false 时不触发 | `(() -> Unit)?` | `null` |
+| `lhOnClick` | 点击回调；`clickable` 为 false 时不触发 | `(() -> Unit)?` | `null` |
 | `titleContent` | 标题内容（覆盖 title，spec 的 default 插槽） | `@Composable (() -> Unit)?` | `null` |
 | `valueContent` | 右侧值内容（覆盖 value，spec 的 value 插槽） | `@Composable (() -> Unit)?` | `null` |
 
-`clickable` 同时控制「右侧指示箭头是否绘制」与「整行是否响应点击」——只有 `clickable = true` 且 `onClick` 非空时点击才触发。
+`clickable` 同时控制「右侧指示箭头是否绘制」与「整行是否响应点击」——只有 `clickable = true` 且 `lhOnClick` 非空时点击才触发。
 
 ## 令牌对照
 
@@ -101,7 +101,7 @@ LhCell(
 | `label-renders-secondary-tone` | label 取次要文字色令牌 | `LhCellDefaultsTest.label_uses_secondary_text_token` |
 | `required-uses-danger-token` | 必填标记取危险色令牌 | `LhCellDefaultsTest.required_uses_danger_token` |
 | `bordered-emits-line-command` | 分隔线消费描边令牌 | `LhCellDefaultsTest.bordered_uses_border_lighter_token` |
-| `clickable-emits-onclick` | 点击触发 onClick | `LhCellTest.clickable_emits_onClick` |
+| `clickable-emits-onclick` | 点击触发 lhOnClick | `LhCellTest.clickable_emits_onClick` |
 | `not-clickable-no-onclick` | 禁用态不触发 | `LhCellTest.not_clickable_no_onClick` |
 
 ```bash

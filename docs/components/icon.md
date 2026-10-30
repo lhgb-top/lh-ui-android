@@ -23,7 +23,7 @@
 <p class="sim-note">HTML 模拟预览（Android / Compose 外观），非真机渲染</p>
 
 ```kotlin
-LhIcon(name = "search", size = LhIconSize.large, tone = LhIconTone.primary)
+LhIcon(name = "search", lhSize = LhIconSize.large, tone = LhIconTone.primary)
 ```
 
 ## 语义色调
@@ -58,10 +58,10 @@ LhIcon(name = "search", size = LhIconSize.large, tone = LhIconTone.primary)
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `name` | 图标名（`LhIcons` 注册表解析） | `String` | — |
-| `size` | 图标尺寸 | `LhIconSize` | `Medium` |
+| `lhSize` | 图标尺寸 | `LhIconSize` | `Medium` |
 | `tone` | 语义色调 | `LhIconTone` | `Default` |
 | `contentDescription` | 无障碍描述；默认取图标名，显式传 `null` 声明为装饰性图标 | `String?` | `name` |
-| `onClick` | 点击回调；为 null 时不可点击 | `(() -> Unit)?` | `null` |
+| `lhOnClick` | 点击回调；为 null 时不可点击 | `(() -> Unit)?` | `null` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 
 ### LhIconSize
@@ -98,7 +98,7 @@ LhIcon(name = "search", size = LhIconSize.large, tone = LhIconTone.primary)
 
 | case id | 断言 | 本地测试 |
 | --- | --- | --- |
-| `click-emits-onclick` | 点击触发 onClick | `LhIconTest.click_emits_onClick`（Compose UI Test） |
+| `click-emits-onclick` | 点击触发 lhOnClick | `LhIconTest.click_emits_onClick`（Compose UI Test） |
 | `default-tone-uses-text-primary` | 默认色调取主文字色令牌 | `LhIconDefaultsTest.default_tone_uses_text_primary_token` |
 | `primary-tone-uses-primary-token` | primary 色调取主色令牌 | `LhIconDefaultsTest.primary_tone_uses_primary_token` |
 | `small-size-uses-small-token` | 小号取 small 尺寸令牌（反向断言 large 未应用） | `LhIconDefaultsTest.small_size_uses_small_token` |

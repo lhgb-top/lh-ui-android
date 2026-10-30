@@ -58,7 +58,7 @@ LhTag(type = LhTagType.success) { Text("成功") }
 | `text` | 标签文字（便捷写法，与 `content` 二选一） | `String?` | `null` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 | `type` | 语义类型 | `LhTagType` | `Default` |
-| `size` | 尺寸 | `LhTagSize` | `Medium` |
+| `lhSize` | 尺寸 | `LhTagSize` | `Medium` |
 | `plain` | 是否镂空（透明底 + 语义色描边） | `Boolean` | `false` |
 | `round` | 是否全圆角（高度一半） | `Boolean` | `false` |
 | `closable` | 是否显示关闭按钮 | `Boolean` | `false` |

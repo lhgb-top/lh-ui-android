@@ -50,12 +50,12 @@ LhInput(
 | `onValueChange` | 值变更回调（必填） | `(String) -> Unit` | — |
 | `placeholder` | 占位文字 | `String?` | `null` |
 | `type` | 输入类型（明文 / 密码） | `LhInputType` | `Text` |
-| `size` | 尺寸 | `LhInputSize` | `Medium` |
+| `lhSize` | 尺寸 | `LhInputSize` | `Medium` |
 | `disabled` | 是否禁用 | `Boolean` | `false` |
 | `readonly` | 是否只读（不可编辑但不禁用样式） | `Boolean` | `false` |
 | `clearable` | 是否显示清除按钮 | `Boolean` | `false` |
 | `maxlength` | 最大长度（超长截断） | `Int` | `Int.MAX_VALUE` |
-| `onFocus` / `onBlur` | 聚焦 / 失焦回调 | `(() -> Unit)?` | `null` |
+| `lhOnFocus` / `lhOnBlur` | 聚焦 / 失焦回调 | `(() -> Unit)?` | `null` |
 | `prefix` / `suffix` | 前缀 / 后缀插槽 | `@Composable (() -> Unit)?` | `null` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 

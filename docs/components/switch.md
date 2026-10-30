@@ -57,7 +57,7 @@ LhSwitch(checked = on, onChange = { on = it })
 | `onChange` | 开关态变更回调，携带新开关态 | `(Boolean) -> Unit` | — |
 | `disabled` | 是否禁用 | `Boolean` | `false` |
 | `loading` | 是否加载中（滑块位置显示加载环，不响应点击） | `Boolean` | `false` |
-| `size` | 尺寸 | `LhSwitchSize` | `Medium` |
+| `lhSize` | 尺寸 | `LhSwitchSize` | `Medium` |
 | `modifier` | 修饰符 | `Modifier` | `Modifier` |
 
 ### LhSwitchSize
