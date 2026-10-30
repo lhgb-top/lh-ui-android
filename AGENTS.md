@@ -123,3 +123,12 @@ core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkToke
   同步原生文档页，并在 `DocRegistry` + `docsui/.../previews/` 补该组件的注册条与可交互预览。
 - 改 `docsui` 的文档内容：内容是 `docs/*.md` 的生成物（见二节注），**禁止手改 `pages/*Doc.kt`**，
   只能手写 `previews/` 里的可交互预览 composable。
+
+## 备案/版权（docs 站）
+
+文档站页脚的备案（ICP / 公安）与版权行走「同步产物 + 适配器」：
+`docs/.beian/beian.json` 由工作区根 `scripts/sync-beian.mjs` 从
+`lh-feng-mo-workspace` 真源生成（**同步产物，禁止手改**；真源只读，改真源后重跑同步）；
+站点差异化（独立备案号、隐藏公安备案、许可证链接等）写 `docs/.beian/beian.local.json`，
+同步时与真源深合并。适配器在 docs/.vitepress/beian.ts。
+完整机制、渲染格式与变更流程见家族 [docs/备案资源同步方案.md](../docs/备案资源同步方案.md)。
