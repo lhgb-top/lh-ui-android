@@ -46,7 +46,7 @@ fun DocPreviewScope.DocCheckboxSizesPreview() {
     horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.lg),
   ) {
     LhCheckboxSize.entries.forEach { size ->
-      LhCheckbox(checked = true, onCheckedChange = {}, label = size.name, size = size)
+      LhCheckbox(checked = true, onCheckedChange = {}, label = size.name, lhSize = size)
     }
   }
 }
@@ -77,7 +77,7 @@ fun DocPreviewScope.DocRadioSizesPreview() {
     horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.lg),
   ) {
     LhRadioSize.entries.forEach { size ->
-      LhRadio(checked = true, onChange = {}, label = size.name, value = size.name, size = size)
+      LhRadio(checked = true, onChange = {}, label = size.name, value = size.name, lhSize = size)
     }
   }
 }

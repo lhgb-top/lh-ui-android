@@ -39,7 +39,7 @@ private fun LhToastSuccessTopPreview() {
   LaunchedEffect(Unit) { state.show("操作成功") }
   LhTheme {
     Column(modifier = Modifier.fillMaxSize()) {
-      LhToast(state, type = LhToastType.success, position = LhToastPosition.top)
+      LhToast(state, type = LhToastType.success, lhPosition = LhToastPosition.top)
     }
   }
 }
@@ -51,7 +51,7 @@ private fun LhToastWarningCenterPreview() {
   LaunchedEffect(Unit) { state.show("请注意输入内容") }
   LhTheme {
     Column(modifier = Modifier.fillMaxSize()) {
-      LhToast(state, type = LhToastType.warning, position = LhToastPosition.center)
+      LhToast(state, type = LhToastType.warning, lhPosition = LhToastPosition.center)
     }
   }
 }
@@ -63,7 +63,7 @@ private fun LhToastDangerBottomPreview() {
   LaunchedEffect(Unit) { state.show("删除失败，请重试") }
   LhTheme {
     Column(modifier = Modifier.fillMaxSize()) {
-      LhToast(state, type = LhToastType.danger, position = LhToastPosition.bottom)
+      LhToast(state, type = LhToastType.danger, lhPosition = LhToastPosition.bottom)
     }
   }
 }

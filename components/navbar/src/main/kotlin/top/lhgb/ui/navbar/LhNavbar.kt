@@ -180,7 +180,7 @@ private fun NavbarSide(
         if (!icon.isNullOrEmpty()) {
           LhIcon(
             name = icon,
-            size = LhIconSize.medium,
+            lhSize = LhIconSize.medium,
             tone = LhIconTone.default,
           )
         }

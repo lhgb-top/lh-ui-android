@@ -34,7 +34,7 @@ private fun LhCellFeaturesPreview() {
     Column(modifier = Modifier.fillMaxWidth()) {
       LhCell(title = "必填项", required = true)
       LhCell(title = "带图标", icon = "star")
-      LhCell(title = "可点击", value = "点击我", clickable = true, onClick = {})
+      LhCell(title = "可点击", value = "点击我", clickable = true, lhOnClick = {})
     }
   }
 }
@@ -52,7 +52,7 @@ private fun LhCellCombinedPreview() {
         required = true,
         icon = "star",
         clickable = true,
-        onClick = {},
+        lhOnClick = {},
       )
       Spacer(Modifier.height(8.dp))
     }

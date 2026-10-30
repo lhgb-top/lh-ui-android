@@ -62,9 +62,9 @@ private fun LhTagSizesPreview() {
       verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
       Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        LhTag(text = "小", size = LhTagSize.small)
-        LhTag(text = "中", size = LhTagSize.medium)
-        LhTag(text = "大", size = LhTagSize.large)
+        LhTag(text = "小", lhSize = LhTagSize.small)
+        LhTag(text = "中", lhSize = LhTagSize.medium)
+        LhTag(text = "大", lhSize = LhTagSize.large)
       }
       Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         LhTag(text = "胶囊", round = true)

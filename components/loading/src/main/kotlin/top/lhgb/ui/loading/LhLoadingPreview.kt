@@ -29,9 +29,9 @@ private fun LhLoadingSizesPreview() {
       horizontalArrangement = Arrangement.spacedBy(24.dp),
       verticalAlignment = Alignment.CenterVertically,
     ) {
-      LhLoading(size = LhLoadingSize.small)
-      LhLoading(size = LhLoadingSize.medium)
-      LhLoading(size = LhLoadingSize.large)
+      LhLoading(lhSize = LhLoadingSize.small)
+      LhLoading(lhSize = LhLoadingSize.medium)
+      LhLoading(lhSize = LhLoadingSize.large)
     }
   }
 }
@@ -62,7 +62,7 @@ private fun LhLoadingInlinePreview() {
       horizontalArrangement = Arrangement.spacedBy(8.dp),
       verticalAlignment = Alignment.CenterVertically,
     ) {
-      LhLoading(size = LhLoadingSize.small)
+      LhLoading(lhSize = LhLoadingSize.small)
       Spacer(Modifier.height(0.dp))
       Text("加载中…")
     }

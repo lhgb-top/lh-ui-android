@@ -27,9 +27,9 @@ private fun LhIconSizesPreview() {
       modifier = Modifier.fillMaxWidth().padding(16.dp),
       horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-      LhIcon(name = "star", size = LhIconSize.small)
-      LhIcon(name = "star", size = LhIconSize.medium)
-      LhIcon(name = "star", size = LhIconSize.large)
+      LhIcon(name = "star", lhSize = LhIconSize.small)
+      LhIcon(name = "star", lhSize = LhIconSize.medium)
+      LhIcon(name = "star", lhSize = LhIconSize.large)
     }
   }
 }
@@ -72,9 +72,9 @@ private fun LhIconClickablePreview() {
       modifier = Modifier.fillMaxWidth().padding(16.dp),
       horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-      LhIcon(name = "search", tone = LhIconTone.primary, onClick = {})
-      LhIcon(name = "plus", tone = LhIconTone.primary, onClick = {})
-      LhIcon(name = "arrow-left", tone = LhIconTone.primary, onClick = {})
+      LhIcon(name = "search", tone = LhIconTone.primary, lhOnClick = {})
+      LhIcon(name = "plus", tone = LhIconTone.primary, lhOnClick = {})
+      LhIcon(name = "arrow-left", tone = LhIconTone.primary, lhOnClick = {})
     }
   }
 }

@@ -52,9 +52,9 @@ private fun LhCheckboxSizesPreview() {
       horizontalArrangement = Arrangement.spacedBy(16.dp),
       verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
     ) {
-      LhCheckbox(checked = true, onCheckedChange = {}, size = LhCheckboxSize.small)
-      LhCheckbox(checked = true, onCheckedChange = {}, size = LhCheckboxSize.medium)
-      LhCheckbox(checked = true, onCheckedChange = {}, size = LhCheckboxSize.large)
+      LhCheckbox(checked = true, onCheckedChange = {}, lhSize = LhCheckboxSize.small)
+      LhCheckbox(checked = true, onCheckedChange = {}, lhSize = LhCheckboxSize.medium)
+      LhCheckbox(checked = true, onCheckedChange = {}, lhSize = LhCheckboxSize.large)
     }
   }
 }
@@ -68,9 +68,9 @@ private fun LhCheckboxIndeterminateSizesPreview() {
       horizontalArrangement = Arrangement.spacedBy(16.dp),
       verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
     ) {
-      LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, size = LhCheckboxSize.small)
-      LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, size = LhCheckboxSize.medium)
-      LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, size = LhCheckboxSize.large)
+      LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, lhSize = LhCheckboxSize.small)
+      LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, lhSize = LhCheckboxSize.medium)
+      LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, lhSize = LhCheckboxSize.large)
     }
   }
 }

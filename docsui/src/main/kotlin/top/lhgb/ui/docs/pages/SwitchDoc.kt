@@ -36,7 +36,7 @@ val switchDoc = DocEntry(
     DocRow(cells = listOf("`onChange`", "开关态变更回调，携带新开关态", "`(Boolean) -> Unit`", "—")),
     DocRow(cells = listOf("`disabled`", "是否禁用", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`loading`", "是否加载中（滑块位置显示加载环，不响应点击）", "`Boolean`", "`false`")),
-    DocRow(cells = listOf("`size`", "尺寸", "`LhSwitchSize`", "`Medium`")),
+    DocRow(cells = listOf("`lhSize`", "尺寸", "`LhSwitchSize`", "`Medium`")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
   ),
   enums = listOf(

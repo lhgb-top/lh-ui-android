@@ -22,7 +22,7 @@ val iconDoc = DocEntry(
       prose = "三档尺寸映射到 `icon.size.*` 令牌；色调 `default` 取 `color.text.primary`，其余取语义色。",
       preview = { DocIconSizeAndTonePreview() },
       code = listOf(
-        "LhIcon(name = \"search\", size = LhIconSize.large, tone = LhIconTone.primary)",
+        "LhIcon(name = \"search\", lhSize = LhIconSize.large, tone = LhIconTone.primary)",
       ),
     ),
     DocSection(
@@ -38,10 +38,10 @@ val iconDoc = DocEntry(
   ),
   props = listOf(
     DocRow(cells = listOf("`name`", "图标名（`LhIcons` 注册表解析）", "`String`", "—")),
-    DocRow(cells = listOf("`size`", "图标尺寸", "`LhIconSize`", "`Medium`")),
+    DocRow(cells = listOf("`lhSize`", "图标尺寸", "`LhIconSize`", "`Medium`")),
     DocRow(cells = listOf("`tone`", "语义色调", "`LhIconTone`", "`Default`")),
     DocRow(cells = listOf("`contentDescription`", "无障碍描述；默认取图标名，显式传 `null` 声明为装饰性图标", "`String?`", "`name`")),
-    DocRow(cells = listOf("`onClick`", "点击回调；为 null 时不可点击", "`(() -> Unit)?`", "`null`")),
+    DocRow(cells = listOf("`lhOnClick`", "点击回调；为 null 时不可点击", "`(() -> Unit)?`", "`null`")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
   ),
   enums = listOf(
@@ -76,7 +76,7 @@ val iconDoc = DocEntry(
     DocRow(cells = listOf("`color.text.{regular,secondary}`", "regular / secondary 色调")),
   ),
   cases = listOf(
-    DocRow(cells = listOf("`click-emits-onclick`", "点击触发 onClick", "`LhIconTest.click_emits_onClick`（Compose UI Test）")),
+    DocRow(cells = listOf("`click-emits-onclick`", "点击触发 lhOnClick", "`LhIconTest.click_emits_onClick`（Compose UI Test）")),
     DocRow(cells = listOf("`default-tone-uses-text-primary`", "默认色调取主文字色令牌", "`LhIconDefaultsTest.default_tone_uses_text_primary_token`")),
     DocRow(cells = listOf("`primary-tone-uses-primary-token`", "primary 色调取主色令牌", "`LhIconDefaultsTest.primary_tone_uses_primary_token`")),
     DocRow(cells = listOf("`small-size-uses-small-token`", "小号取 small 尺寸令牌（反向断言 large 未应用）", "`LhIconDefaultsTest.small_size_uses_small_token`")),

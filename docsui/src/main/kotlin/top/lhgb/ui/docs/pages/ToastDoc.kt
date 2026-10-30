@@ -24,7 +24,7 @@ val toastDoc = DocEntry(
       code = listOf(
         "val state = rememberLhToastState(onClose = { /* 可选：记录关闭 */ })",
         "Column {",
-        "  LhButton(onClick = { state.show(\"已保存\") }) { Text(\"触发\") }",
+        "  LhButton(lhOnClick = { state.show(\"已保存\") }) { Text(\"触发\") }",
         "  LhToast(state = state)",
         "}",
       ),
@@ -36,14 +36,14 @@ val toastDoc = DocEntry(
     ),
     DocSection(
       title = "定位",
-      prose = "`position` 取 `top` / `center` / `bottom`，两端各留 `spacing.xl` 边距；宽度由文字测量得出并封顶可用宽度的 80%。",
+      prose = "`lhPosition` 取 `top` / `center` / `bottom`，两端各留 `spacing.xl` 边距；宽度由文字测量得出并封顶可用宽度的 80%。",
       preview = { DocToastPositionPreview() },
     ),
   ),
   props = listOf(
     DocRow(cells = listOf("`state`", "轻提示状态机（承载可见性、文字与计时）", "`LhToastState`", "—")),
     DocRow(cells = listOf("`type`", "语义类型；非 default 时绘制语义色圆点", "`LhToastType`", "`default`")),
-    DocRow(cells = listOf("`position`", "在可用区域内的定位", "`LhToastPosition`", "`center`")),
+    DocRow(cells = listOf("`lhPosition`", "在可用区域内的定位", "`LhToastPosition`", "`center`")),
     DocRow(cells = listOf("`modifier`", "修饰符（作用于胶囊）", "`Modifier`", "`Modifier`")),
   ),
   enums = listOf(

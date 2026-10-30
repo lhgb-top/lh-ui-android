@@ -46,7 +46,7 @@ val textareaDoc = DocEntry(
     DocRow(cells = listOf("`readonly`", "是否只读", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`showCount`", "是否显示字数统计", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`maxlength`", "最大长度（超长截断）", "`Int`", "`Int.MAX_VALUE`")),
-    DocRow(cells = listOf("`onFocus` / `onBlur`", "聚焦 / 失焦回调", "`(() -> Unit)?`", "`null`")),
+    DocRow(cells = listOf("`lhOnFocus` / `lhOnBlur`", "聚焦 / 失焦回调", "`(() -> Unit)?`", "`null`")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
   ),
   tokens = listOf(

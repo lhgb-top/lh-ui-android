@@ -43,15 +43,15 @@ import top.lhgb.ui.theme.LhThemeColors
  * @param modifier 修饰符
  * @param placeholder 占位文字（取 color.text.placeholder 令牌）
  * @param type 输入类型；password 以圆点掩码显示
- * @param size 输入框尺寸，映射到 input.height / paddingHorizontal / fontSize 令牌
+ * @param lhSize 输入框尺寸，映射到 input.height / paddingHorizontal / fontSize 令牌
  * @param disabled 是否禁用；禁用取 disabled.* 令牌且不响应输入与清除
  * @param readonly 是否只读；可聚焦但不接受输入
  * @param clearable 是否显示清除按钮（value 非空时出现，点击触发 onValueChange("")）
  * @param maxlength 最大字符数；超出部分被截断
  * @param prefix 前置内容（spec 的 prefix 插槽）
  * @param suffix 后置内容（spec 的 suffix 插槽）
- * @param onFocus 聚焦回调
- * @param onBlur 失焦回调
+ * @param lhOnFocus 聚焦回调
+ * @param lhOnBlur 失焦回调
  */
 @Composable
 fun LhInput(
@@ -60,21 +60,21 @@ fun LhInput(
   modifier: Modifier = Modifier,
   placeholder: String? = null,
   type: LhInputType = LhInputType.text,
-  size: LhInputSize = LhInputSize.medium,
+  lhSize: LhInputSize = LhInputSize.medium,
   disabled: Boolean = false,
   readonly: Boolean = false,
   clearable: Boolean = false,
   maxlength: Int? = null,
   prefix: @Composable (() -> Unit)? = null,
   suffix: @Composable (() -> Unit)? = null,
-  onFocus: (() -> Unit)? = null,
-  onBlur: (() -> Unit)? = null,
+  lhOnFocus: (() -> Unit)? = null,
+  lhOnBlur: (() -> Unit)? = null,
 ) {
   val colors: LhColors = LhThemeColors
   val interactionSource = remember { MutableInteractionSource() }
   val focused by interactionSource.collectIsFocusedAsState()
-  val appearance = remember(size, disabled, focused, colors) {
-    LhInputDefaults.resolve(size, disabled, focused, colors)
+  val appearance = remember(lhSize, disabled, focused, colors) {
+    LhInputDefaults.resolve(lhSize, disabled, focused, colors)
   }
   val shape = remember(appearance.borderRadius) { RoundedCornerShape(appearance.borderRadius) }
 
@@ -152,10 +152,10 @@ fun LhInput(
     if (clearable && value.isNotEmpty() && !disabled) {
       LhIcon(
         name = "clear",
-        size = LhIconSize.small,
+        lhSize = LhIconSize.small,
         tone = LhIconTone.regular,
         contentDescription = "清除",
-        onClick = { onValueChange("") },
+        lhOnClick = { onValueChange("") },
         modifier = Modifier.size(appearance.clearIconSize),
       )
     }
@@ -163,6 +163,6 @@ fun LhInput(
     if (suffix != null) suffix()
   }
   androidx.compose.runtime.LaunchedEffect(focused) {
-    if (focused) onFocus?.invoke() else onBlur?.invoke()
+    if (focused) lhOnFocus?.invoke() else lhOnBlur?.invoke()
   }
 }

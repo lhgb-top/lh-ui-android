@@ -28,7 +28,7 @@ class LhIconTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhIcon(name = "star", onClick = { clicks++ })
+        LhIcon(name = "star", lhOnClick = { clicks++ })
       }
     }
     composeRule.onNodeWithContentDescription("star").assertIsDisplayed().performClick()
@@ -41,7 +41,7 @@ class LhIconTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhIcon(name = "not-registered-icon", onClick = { clicks++ })
+        LhIcon(name = "not-registered-icon", lhOnClick = { clicks++ })
       }
     }
     composeRule.onNodeWithContentDescription("not-registered-icon").assertDoesNotExist()

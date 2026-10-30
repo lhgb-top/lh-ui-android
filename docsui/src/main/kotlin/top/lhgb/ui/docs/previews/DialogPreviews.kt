@@ -27,8 +27,8 @@ fun DocPreviewScope.DocDialogTypesPreview() {
 
   Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
-      LhButton(type = LhButtonType.primary, onClick = { default = true }) { Text("默认弹窗") }
-      LhButton(type = LhButtonType.primary, onClick = { primary = true }) { Text("主要弹窗") }
+      LhButton(type = LhButtonType.primary, lhOnClick = { default = true }) { Text("默认弹窗") }
+      LhButton(type = LhButtonType.primary, lhOnClick = { primary = true }) { Text("主要弹窗") }
     }
   }
 
@@ -60,9 +60,9 @@ fun DocPreviewScope.DocDialogSemanticAndMaskPreview() {
 
   Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
-      LhButton(type = LhButtonType.success, onClick = { success = true }) { Text("成功") }
-      LhButton(type = LhButtonType.warning, onClick = { warning = true }) { Text("警告") }
-      LhButton(type = LhButtonType.danger, onClick = { danger = true }) { Text("危险") }
+      LhButton(type = LhButtonType.success, lhOnClick = { success = true }) { Text("成功") }
+      LhButton(type = LhButtonType.warning, lhOnClick = { warning = true }) { Text("警告") }
+      LhButton(type = LhButtonType.danger, lhOnClick = { danger = true }) { Text("危险") }
     }
   }
 

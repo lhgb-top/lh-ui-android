@@ -24,23 +24,23 @@ import top.lhgb.ui.theme.LhThemeColors
  *
  * @param name 图标名（本地图标体系，见 [LhIcons]）；未登记的名称不绘制，不抛异常
  * @param modifier 修饰符
- * @param size 图标尺寸，映射到 icon.size.* 令牌
+ * @param lhSize 图标尺寸，映射到 icon.size.* 令牌
  * @param tone 图标语义色调；default 为主要文字色，其余取对应语义色
- * @param onClick 点击回调；不传时图标为纯展示（无点击区域语义）
+ * @param lhOnClick 点击回调；不传时图标为纯展示（无点击区域语义）
  * @param contentDescription 无障碍描述；默认取图标名，显式传 null 可声明「装饰性图标」
  */
 @Composable
 fun LhIcon(
   name: String,
   modifier: Modifier = Modifier,
-  size: LhIconSize = LhIconSize.medium,
+  lhSize: LhIconSize = LhIconSize.medium,
   tone: LhIconTone = LhIconTone.default,
-  onClick: (() -> Unit)? = null,
+  lhOnClick: (() -> Unit)? = null,
   contentDescription: String? = name,
 ) {
   val colors: LhColors = LhThemeColors
-  val appearance = remember(size, tone, colors) {
-    LhIconDefaults.resolve(size, tone, colors)
+  val appearance = remember(lhSize, tone, colors) {
+    LhIconDefaults.resolve(lhSize, tone, colors)
   }
   val vector: ImageVector? = remember(name) { LhIcons.resolve(name) }
   if (vector == null) return  // 未登记图标名：安全跳过，不抛异常
@@ -53,11 +53,11 @@ fun LhIcon(
     modifier = modifier
       .size(appearance.size)
       .then(
-        if (onClick != null) {
+        if (lhOnClick != null) {
           Modifier.clickable(
             interactionSource = interactionSource,
             indication = ripple(color = appearance.color),
-          ) { onClick() }
+          ) { lhOnClick() }
         } else {
           Modifier
         },

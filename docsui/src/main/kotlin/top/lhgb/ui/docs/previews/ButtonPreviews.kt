@@ -29,7 +29,7 @@ fun DocPreviewScope.DocButtonTypesPreview() {
     LhButtonType.entries.forEach { type ->
       LhButton(
         type = type,
-        onClick = {
+        lhOnClick = {
           count++
           showToast("点击了 ${type.name}（$count）")
         },
@@ -49,8 +49,8 @@ fun DocPreviewScope.DocButtonSizesPreview() {
     LhButtonSize.entries.forEach { size ->
       LhButton(
         type = LhButtonType.primary,
-        size = size,
-        onClick = { showToast("size = ${size.name}") },
+        lhSize = size,
+        lhOnClick = { showToast("size = ${size.name}") },
       ) { Text(size.name) }
     }
   }
@@ -64,11 +64,11 @@ fun DocPreviewScope.DocButtonStatesPreview() {
     horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
   ) {
-    LhButton(type = LhButtonType.primary, onClick = { showToast("正常按钮") }) { Text("正常") }
-    LhButton(type = LhButtonType.primary, disabled = true, onClick = {}) { Text("禁用") }
-    LhButton(type = LhButtonType.primary, loading = true, onClick = {}) { Text("加载中") }
+    LhButton(type = LhButtonType.primary, lhOnClick = { showToast("正常按钮") }) { Text("正常") }
+    LhButton(type = LhButtonType.primary, disabled = true, lhOnClick = {}) { Text("禁用") }
+    LhButton(type = LhButtonType.primary, loading = true, lhOnClick = {}) { Text("加载中") }
     // 禁用优先：disabled 与 loading 共存时按禁用处理（黄金用例 disabled-precedes-loading）
-    LhButton(type = LhButtonType.primary, disabled = true, loading = true, onClick = {}) {
+    LhButton(type = LhButtonType.primary, disabled = true, loading = true, lhOnClick = {}) {
       Text("禁用优先")
     }
   }
@@ -85,15 +85,15 @@ fun DocPreviewScope.DocButtonIconAndPatternPreview() {
     LhButton(
       type = LhButtonType.primary,
       icon = "search",
-      onClick = { showToast("带图标的按钮") },
+      lhOnClick = { showToast("带图标的按钮") },
     ) { Text("搜索") }
-    LhButton(icon = "refresh", onClick = { showToast("默认类型 + 图标") }) { Text("刷新") }
+    LhButton(icon = "refresh", lhOnClick = { showToast("默认类型 + 图标") }) { Text("刷新") }
     LhButton(
       type = LhButtonType.primary,
       bgPattern = true,
-      onClick = { showToast("国风花纹底") },
+      lhOnClick = { showToast("国风花纹底") },
     ) { Text("主要花纹底") }
-    LhButton(bgPattern = true, onClick = { showToast("国风花纹底") }) { Text("默认花纹底") }
+    LhButton(bgPattern = true, lhOnClick = { showToast("国风花纹底") }) { Text("默认花纹底") }
   }
 }
 
@@ -105,9 +105,9 @@ fun DocPreviewScope.DocButtonThemePreview() {
     horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
   ) {
-    LhButton(type = LhButtonType.primary, onClick = {}) { Text("主要按钮") }
-    LhButton(onClick = {}) { Text("默认按钮") }
-    LhButton(type = LhButtonType.primary, disabled = true, onClick = {}) { Text("禁用") }
-    LhButton(type = LhButtonType.success, onClick = {}) { Text("成功") }
+    LhButton(type = LhButtonType.primary, lhOnClick = {}) { Text("主要按钮") }
+    LhButton(lhOnClick = {}) { Text("默认按钮") }
+    LhButton(type = LhButtonType.primary, disabled = true, lhOnClick = {}) { Text("禁用") }
+    LhButton(type = LhButtonType.success, lhOnClick = {}) { Text("成功") }
   }
 }

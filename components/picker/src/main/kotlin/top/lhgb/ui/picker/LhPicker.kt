@@ -220,7 +220,7 @@ private fun PickerToolbar(
   ) {
     LhButton(
       type = LhButtonType.default,
-      onClick = onCancel,
+      lhOnClick = onCancel,
       modifier = Modifier.weight(1f),
     ) { Text(cancelText) }
 
@@ -238,7 +238,7 @@ private fun PickerToolbar(
 
     LhButton(
       type = LhButtonType.primary,
-      onClick = onConfirm,
+      lhOnClick = onConfirm,
       modifier = Modifier.weight(1f),
     ) { Text(confirmText) }
   }

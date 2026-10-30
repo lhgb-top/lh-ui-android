@@ -44,7 +44,7 @@ import top.lhgb.ui.theme.LhThemeColors
  * @param clickable 是否可点击；为 true 时显示右侧指示箭头并响应点击
  * @param required 是否在标题前显示必填红星（color.danger.default）
  * @param icon 左侧图标名（本地图标体系）；空时不绘制
- * @param onClick 点击回调；clickable 为 false 时不触发
+ * @param lhOnClick 点击回调；clickable 为 false 时不触发
  * @param titleContent 标题内容（覆盖 title，spec 的 default 插槽）
  * @param valueContent 右侧值内容（覆盖 value，spec 的 value 插槽）
  */
@@ -58,7 +58,7 @@ fun LhCell(
   clickable: Boolean = false,
   required: Boolean = false,
   icon: String? = null,
-  onClick: (() -> Unit)? = null,
+  lhOnClick: (() -> Unit)? = null,
   titleContent: @Composable (() -> Unit)? = null,
   valueContent: @Composable (() -> Unit)? = null,
 ) {
@@ -73,11 +73,11 @@ fun LhCell(
       .fillMaxWidth()
       .wrapContentHeight()
       .then(
-        if (clickable && onClick != null) {
+        if (clickable && lhOnClick != null) {
           Modifier.clickable(
             interactionSource = interactionSource,
             indication = ripple(color = colors.hoverBg),
-          ) { onClick() }
+          ) { lhOnClick() }
         } else {
           Modifier
         },
@@ -106,7 +106,7 @@ fun LhCell(
     if (icon != null) {
       LhIcon(
         name = icon,
-        size = top.lhgb.ui.icon.LhIconSize.medium,
+        lhSize = top.lhgb.ui.icon.LhIconSize.medium,
         tone = top.lhgb.ui.icon.LhIconTone.regular,
         contentDescription = null,
       )

@@ -28,7 +28,7 @@ fun DocPreviewScope.DocCellRequiredAndLinkPreview() {
       title = "可点击",
       value = "点我",
       clickable = true,
-      onClick = { showToast("Cell 被点击") },
+      lhOnClick = { showToast("Cell 被点击") },
     )
   }
 }

@@ -21,7 +21,7 @@ fun DocPreviewScope.DocToastBasicPreview() {
     modifier = Modifier.fillMaxWidth(),
     horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
   ) {
-    LhButton(type = top.lhgb.ui.button.LhButtonType.primary, onClick = { showToast("这是一条轻提示") }) {
+    LhButton(type = top.lhgb.ui.button.LhButtonType.primary, lhOnClick = { showToast("这是一条轻提示") }) {
       Text("弹出 Toast")
     }
   }
@@ -33,7 +33,7 @@ fun DocPreviewScope.DocToastTypesPreview() {
   Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs)) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs)) {
       LhToastType.entries.forEach { type ->
-        LhButton(onClick = { showToast("${type.name} 提示") }) { Text(type.name) }
+        LhButton(lhOnClick = { showToast("${type.name} 提示") }) { Text(type.name) }
       }
     }
   }
@@ -44,15 +44,15 @@ fun DocPreviewScope.DocToastTypesPreview() {
 fun DocPreviewScope.DocToastPositionPreview() {
   Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs)) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs)) {
-      LhButton(onClick = {
+      LhButton(lhOnClick = {
         setToastPosition(LhToastPosition.top)
         showToast("顶部提示")
       }) { Text("top") }
-      LhButton(onClick = {
+      LhButton(lhOnClick = {
         setToastPosition(LhToastPosition.center)
         showToast("中间提示")
       }) { Text("center") }
-      LhButton(onClick = {
+      LhButton(lhOnClick = {
         setToastPosition(LhToastPosition.bottom)
         showToast("底部提示")
       }) { Text("bottom") }

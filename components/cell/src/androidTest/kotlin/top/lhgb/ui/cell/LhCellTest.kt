@@ -40,7 +40,7 @@ class LhCellTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhCell(title = "可点", value = "值", clickable = true, onClick = { clicks++ })
+        LhCell(title = "可点", value = "值", clickable = true, lhOnClick = { clicks++ })
       }
     }
     composeRule.onNodeWithText("可点").assertIsDisplayed().performClick()
@@ -53,7 +53,7 @@ class LhCellTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhCell(title = "不可点", onClick = { clicks++ })
+        LhCell(title = "不可点", lhOnClick = { clicks++ })
       }
     }
     composeRule.onNodeWithText("不可点").performClick()

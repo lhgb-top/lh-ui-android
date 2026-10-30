@@ -36,7 +36,7 @@ import top.lhgb.ui.theme.LhThemeColors
  * @param indeterminate 是否半选（不确定态）
  * @param disabled 是否禁用
  * @param label 标签文字（spec 的 default 插槽的便捷形态）
- * @param size 方框尺寸档位
+ * @param lhSize 方框尺寸档位
  * @param labelContent 标签内容（覆盖 label，spec 的 default 插槽）
  */
 @Composable
@@ -47,12 +47,12 @@ fun LhCheckbox(
   indeterminate: Boolean = false,
   disabled: Boolean = false,
   label: String? = null,
-  size: LhCheckboxSize = LhCheckboxSize.medium,
+  lhSize: LhCheckboxSize = LhCheckboxSize.medium,
   labelContent: @Composable (() -> Unit)? = null,
 ) {
   val colors: LhColors = LhThemeColors
-  val appearance = remember(size, checked, indeterminate, disabled, colors) {
-    LhCheckboxDefaults.resolve(size, checked, indeterminate, disabled, colors)
+  val appearance = remember(lhSize, checked, indeterminate, disabled, colors) {
+    LhCheckboxDefaults.resolve(lhSize, checked, indeterminate, disabled, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
 

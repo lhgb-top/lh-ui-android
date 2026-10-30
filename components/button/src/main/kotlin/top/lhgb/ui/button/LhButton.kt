@@ -57,9 +57,9 @@ object LhButtonIcons {
  * props 与 `lh-ui-core/specs/button.json` 逐字对齐；行为遵循 `cases/button.json`
  * 的 8 条黄金用例（已翻译为 JVM 单测 + Compose UI Test）。
  *
- * @param onClick 点击回调；disabled 或 loading 为 true 时不触发
+ * @param lhOnClick 点击回调；disabled 或 loading 为 true 时不触发
  * @param type 按钮类型，决定底色与文字色
- * @param size 按钮尺寸，映射到 button.height / paddingHorizontal / fontSize / iconSize 令牌
+ * @param lhSize 按钮尺寸，映射到 button.height / paddingHorizontal / fontSize / iconSize 令牌
  * @param disabled 是否禁用；禁用时不响应点击并呈现禁用样式（disabled.* 令牌）
  * @param loading 是否加载中；加载中显示指示器且点击不触发 onClick
  * @param icon 图标名（本地图标体系，见 [LhButtonIcons]），按钮内左侧绘制
@@ -68,10 +68,10 @@ object LhButtonIcons {
  */
 @Composable
 fun LhButton(
-  onClick: () -> Unit,
+  lhOnClick: () -> Unit,
   modifier: Modifier = Modifier,
   type: LhButtonType = LhButtonType.default,
-  size: LhButtonSize = LhButtonSize.medium,
+  lhSize: LhButtonSize = LhButtonSize.medium,
   disabled: Boolean = false,
   loading: Boolean = false,
   icon: String? = null,
@@ -79,8 +79,8 @@ fun LhButton(
   content: @Composable () -> Unit,
 ) {
   val colors = LhThemeColors
-  val appearance = remember(type, size, disabled, loading, bgPattern, colors) {
-    LhButtonDefaults.resolve(type, size, disabled, loading, bgPattern, colors)
+  val appearance = remember(type, lhSize, disabled, loading, bgPattern, colors) {
+    LhButtonDefaults.resolve(type, lhSize, disabled, loading, bgPattern, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
   val shape = remember(appearance.borderRadius) { RoundedCornerShape(appearance.borderRadius) }
@@ -92,7 +92,7 @@ fun LhButton(
       .clip(shape)
       .drawBehind {
         // 花纹底纹（先画，垫在底色之下，不影响文字对比度）
-        // 注意：lambda 内的 size 会被外层 LhButton 的 size 参数（LhButtonSize）遮蔽，
+        // 注意：lambda 内的 size 会被外层 LhButton 的 lhSize 参数（LhButtonSize）遮蔽，
         // 必须用 this.size 显式取 DrawScope 的画布尺寸。
         if (appearance.patternColor != null) {
           val step = LhTokens.Spacing.base.toPx()
@@ -131,7 +131,7 @@ fun LhButton(
           Modifier.clickable(
             interactionSource = interactionSource,
             indication = ripple(color = appearance.contentColor),
-          ) { onClick() }
+          ) { lhOnClick() }
         } else {
           Modifier
         },

@@ -28,7 +28,7 @@ class LhButtonTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhButton(onClick = { clicks++ }) { Text("按钮") }
+        LhButton(lhOnClick = { clicks++ }) { Text("按钮") }
       }
     }
     composeRule.onNodeWithText("按钮").assertIsDisplayed().performClick()
@@ -40,7 +40,7 @@ class LhButtonTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhButton(disabled = true, onClick = { clicks++ }) { Text("禁用按钮") }
+        LhButton(disabled = true, lhOnClick = { clicks++ }) { Text("禁用按钮") }
       }
     }
     composeRule.onNodeWithText("禁用按钮").performClick()
@@ -52,7 +52,7 @@ class LhButtonTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhButton(loading = true, onClick = { clicks++ }) { Text("加载按钮") }
+        LhButton(loading = true, lhOnClick = { clicks++ }) { Text("加载按钮") }
       }
     }
     composeRule.onNodeWithText("加载按钮").performClick()
@@ -64,7 +64,7 @@ class LhButtonTest {
     var clicks by mutableIntStateOf(0)
     composeRule.setContent {
       LhTheme {
-        LhButton(disabled = true, loading = true, onClick = { clicks++ }) { Text("禁用加载按钮") }
+        LhButton(disabled = true, loading = true, lhOnClick = { clicks++ }) { Text("禁用加载按钮") }
       }
     }
     composeRule.onNodeWithText("禁用加载按钮").performClick()

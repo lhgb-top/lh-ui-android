@@ -26,7 +26,7 @@ private val registeredIcons = listOf(
 @Composable
 private fun IconCell(name: String, tone: LhIconTone, size: LhIconSize, onClick: (() -> Unit)? = null) {
   Column(horizontalAlignment = Alignment.CenterHorizontally) {
-    LhIcon(name = name, size = size, tone = tone, onClick = onClick)
+    LhIcon(name = name, lhSize = size, tone = tone, lhOnClick = onClick)
     Text(
       text = name,
       color = top.lhgb.ui.theme.LhThemeColors.textSecondary,
@@ -44,7 +44,7 @@ fun DocPreviewScope.DocIconSizeAndTonePreview() {
   ) {
     LhIconSize.entries.forEach { size ->
       Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        LhIcon(name = "search", size = size, tone = LhIconTone.primary)
+        LhIcon(name = "search", lhSize = size, tone = LhIconTone.primary)
         Text(
           text = size.name,
           color = top.lhgb.ui.theme.LhThemeColors.textSecondary,
@@ -65,7 +65,7 @@ fun DocPreviewScope.DocIconTonesPreview() {
   ) {
     LhIconTone.entries.forEach { tone ->
       Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        LhIcon(name = "check-circle", size = LhIconSize.large, tone = tone)
+        LhIcon(name = "check-circle", lhSize = LhIconSize.large, tone = tone)
         Text(
           text = tone.name,
           color = top.lhgb.ui.theme.LhThemeColors.textSecondary,
@@ -106,7 +106,7 @@ fun DocPreviewScope.DocIconRegistryPreview() {
       LhIcon(
         name = "not-a-real-icon",
         modifier = Modifier.size(LhTokens.Icon.Size.medium),
-        onClick = { showToast("不会触发") },
+        lhOnClick = { showToast("不会触发") },
       )
     }
   }

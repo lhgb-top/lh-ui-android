@@ -38,8 +38,8 @@ import top.lhgb.ui.theme.LhThemeColors
  * @param readonly 是否只读
  * @param showCount 是否在右下角显示字数统计
  * @param maxlength 最大字符数；超出部分被截断
- * @param onFocus 聚焦回调
- * @param onBlur 失焦回调
+ * @param lhOnFocus 聚焦回调
+ * @param lhOnBlur 失焦回调
  */
 @Composable
 fun LhTextarea(
@@ -52,8 +52,8 @@ fun LhTextarea(
   readonly: Boolean = false,
   showCount: Boolean = false,
   maxlength: Int? = null,
-  onFocus: (() -> Unit)? = null,
-  onBlur: (() -> Unit)? = null,
+  lhOnFocus: (() -> Unit)? = null,
+  lhOnBlur: (() -> Unit)? = null,
 ) {
   val colors: LhColors = LhThemeColors
   val interactionSource = remember { MutableInteractionSource() }
@@ -133,6 +133,6 @@ fun LhTextarea(
   }
 
   LaunchedEffect(focused) {
-    if (focused) onFocus?.invoke() else onBlur?.invoke()
+    if (focused) lhOnFocus?.invoke() else lhOnBlur?.invoke()
   }
 }

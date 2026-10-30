@@ -21,7 +21,7 @@ val guideLocalLinkingDoc = DocEntry(
         "├── lh-ui-android/            # 本仓",
         "├── lh-ui-ios/                # 兄弟仓",
         "├── lh-ui-harmony/",
-        "└── lh-ui-c/",
+        "└── lh-ui-windows/",
       ),
     ),
     DocSection(

@@ -68,9 +68,9 @@ private fun LhRadioSizesPreview() {
       horizontalArrangement = Arrangement.spacedBy(16.dp),
       verticalAlignment = Alignment.CenterVertically,
     ) {
-      LhRadio(checked = true, onChange = {}, size = LhRadioSize.small)
-      LhRadio(checked = true, onChange = {}, size = LhRadioSize.medium)
-      LhRadio(checked = true, onChange = {}, size = LhRadioSize.large)
+      LhRadio(checked = true, onChange = {}, lhSize = LhRadioSize.small)
+      LhRadio(checked = true, onChange = {}, lhSize = LhRadioSize.medium)
+      LhRadio(checked = true, onChange = {}, lhSize = LhRadioSize.large)
     }
   }
 }

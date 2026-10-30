@@ -25,7 +25,7 @@ fun DocPreviewScope.DocPickerBasicPreview() {
 
   Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
-      LhButton(type = LhButtonType.primary, onClick = { visible = true }) {
+      LhButton(type = LhButtonType.primary, lhOnClick = { visible = true }) {
         Text("请选择天干（当前：${options[index]}）")
       }
     }
@@ -53,7 +53,7 @@ fun DocPreviewScope.DocPickerSelectionPreview() {
   Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
       // value 预选：打开时滚轮停在「广州」（index = 2）
-      LhButton(type = LhButtonType.primary, onClick = { visible = true }) {
+      LhButton(type = LhButtonType.primary, lhOnClick = { visible = true }) {
         Text("预选城市（当前：${options[index]}）")
       }
     }

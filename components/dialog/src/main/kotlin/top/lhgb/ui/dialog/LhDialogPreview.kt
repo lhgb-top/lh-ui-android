@@ -80,7 +80,7 @@ private fun LhDialogFooterSlotPreview() {
             horizontalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
           ) {
-            LhButton(type = LhButtonType.primary, onClick = { visible = false }) {
+            LhButton(type = LhButtonType.primary, lhOnClick = { visible = false }) {
               Text("知道了")
             }
           }

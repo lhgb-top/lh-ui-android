@@ -32,18 +32,18 @@ import top.lhgb.ui.tokens.LhTokens
  * 令牌，直径取 size 令牌，旋转走 Compose 无限动画（时长 Motion.Duration.base 毫秒）。
  *
  * @param modifier 修饰符
- * @param size 指示器直径档位，映射到 loading.size.* 令牌
+ * @param lhSize 指示器直径档位，映射到 loading.size.* 令牌
  * @param tone 环色，取对应语义色令牌
  */
 @Composable
 fun LhLoading(
   modifier: Modifier = Modifier,
-  size: LhLoadingSize = LhLoadingSize.medium,
+  lhSize: LhLoadingSize = LhLoadingSize.medium,
   tone: LhLoadingTone = LhLoadingTone.primary,
 ) {
   val colors: LhColors = LhThemeColors
-  val appearance = remember(size, tone, colors) {
-    LhLoadingDefaults.resolve(size, tone, colors)
+  val appearance = remember(lhSize, tone, colors) {
+    LhLoadingDefaults.resolve(lhSize, tone, colors)
   }
 
   // spec：旋转进度由后端驱动。端侧等价物是无限旋转，时长取 Motion.Duration.base（毫秒）

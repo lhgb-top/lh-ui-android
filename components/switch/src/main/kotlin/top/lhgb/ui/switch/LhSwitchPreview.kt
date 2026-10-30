@@ -51,9 +51,9 @@ private fun LhSwitchSizesPreview() {
       horizontalArrangement = Arrangement.spacedBy(16.dp),
       verticalAlignment = Alignment.CenterVertically,
     ) {
-      LhSwitch(checked = true, onChange = {}, size = LhSwitchSize.small)
-      LhSwitch(checked = true, onChange = {}, size = LhSwitchSize.medium)
-      LhSwitch(checked = true, onChange = {}, size = LhSwitchSize.large)
+      LhSwitch(checked = true, onChange = {}, lhSize = LhSwitchSize.small)
+      LhSwitch(checked = true, onChange = {}, lhSize = LhSwitchSize.medium)
+      LhSwitch(checked = true, onChange = {}, lhSize = LhSwitchSize.large)
     }
   }
 }

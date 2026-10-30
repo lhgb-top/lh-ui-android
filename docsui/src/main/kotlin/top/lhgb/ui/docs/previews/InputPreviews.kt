@@ -52,7 +52,7 @@ fun DocPreviewScope.DocInputSizeAndFocusPreview() {
 
   Column(verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(LhTokens.Spacing.sm)) {
     LhInputSize.entries.forEach { size ->
-      LhInput(value = "", onValueChange = {}, placeholder = "size = ${size.name}", size = size)
+      LhInput(value = "", onValueChange = {}, placeholder = "size = ${size.name}", lhSize = size)
     }
     // maxlength：超出长度的输入被截断（黄金用例 maxlength-truncates-input）
     LhInput(

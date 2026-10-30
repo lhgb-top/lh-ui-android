@@ -39,7 +39,7 @@ import top.lhgb.ui.theme.LhThemeColors
  * @param text 标签文字（spec 的 default 插槽的便捷形态；与 [content] 互斥，优先 text）
  * @param modifier 修饰符
  * @param type 语义类型，决定底色、文字色与描边色
- * @param size 标签尺寸，映射到 tag.height / paddingHorizontal / fontSize 令牌
+ * @param lhSize 标签尺寸，映射到 tag.height / paddingHorizontal / fontSize 令牌
  * @param plain 是否浅底描边形态
  * @param round 是否胶囊形态（圆角取高度一半）
  * @param closable 是否显示关闭符；点击关闭符触发 [onClose]
@@ -51,7 +51,7 @@ fun LhTag(
   text: String? = null,
   modifier: Modifier = Modifier,
   type: LhTagType = LhTagType.default,
-  size: LhTagSize = LhTagSize.medium,
+  lhSize: LhTagSize = LhTagSize.medium,
   plain: Boolean = false,
   round: Boolean = false,
   closable: Boolean = false,
@@ -59,8 +59,8 @@ fun LhTag(
   content: @Composable (() -> Unit)? = null,
 ) {
   val colors: LhColors = LhThemeColors
-  val appearance = remember(type, size, plain, round, colors) {
-    LhTagDefaults.resolve(type, size, plain, round, colors)
+  val appearance = remember(type, lhSize, plain, round, colors) {
+    LhTagDefaults.resolve(type, lhSize, plain, round, colors)
   }
   val shape = remember(appearance.borderRadius) { RoundedCornerShape(appearance.borderRadius) }
 

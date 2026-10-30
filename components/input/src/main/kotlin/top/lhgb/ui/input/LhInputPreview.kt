@@ -50,9 +50,9 @@ private fun LhInputSizesPreview() {
       modifier = Modifier.fillMaxWidth().padding(16.dp),
       verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-      LhInput(value = "", onValueChange = {}, placeholder = "小号", size = LhInputSize.small)
-      LhInput(value = "", onValueChange = {}, placeholder = "中号", size = LhInputSize.medium)
-      LhInput(value = "", onValueChange = {}, placeholder = "大号", size = LhInputSize.large)
+      LhInput(value = "", onValueChange = {}, placeholder = "小号", lhSize = LhInputSize.small)
+      LhInput(value = "", onValueChange = {}, placeholder = "中号", lhSize = LhInputSize.medium)
+      LhInput(value = "", onValueChange = {}, placeholder = "大号", lhSize = LhInputSize.large)
     }
   }
 }

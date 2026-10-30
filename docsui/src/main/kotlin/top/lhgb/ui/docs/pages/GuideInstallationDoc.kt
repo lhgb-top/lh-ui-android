@@ -25,7 +25,7 @@ val guideInstallationDoc = DocEntry(
         "  repositories {",
         "    google()",
         "    mavenCentral()",
-        "    maven(\"https://maven.pkg.github.com/lhgb-top/lh-ui-android\") // 家族 Maven 仓",
+        "    maven(\"https://maven.pkg.github.com/lhgb-top/lh-ui-android\") // 家族 Maven 仓（过渡 / 内网）",
         "  }",
         "}",
         "// app/build.gradle.kts",

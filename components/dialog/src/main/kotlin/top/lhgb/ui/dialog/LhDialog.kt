@@ -144,7 +144,7 @@ fun LhDialog(
             if (cancelText.isNotEmpty()) {
               LhButton(
                 type = LhButtonType.default,
-                onClick = {
+                lhOnClick = {
                   onCancel()
                   onClose()
                 },
@@ -156,7 +156,7 @@ fun LhDialog(
               if (cancelText.isNotEmpty()) Spacer(Modifier.width(LhTokens.Spacing.base))
               LhButton(
                 type = appearance.confirmButtonType,
-                onClick = {
+                lhOnClick = {
                   onConfirm()
                   onClose()
                 },

@@ -20,12 +20,12 @@ val loadingDoc = DocEntry(
       prose = "三档尺寸映射到 `loading.size.*` 令牌，描边宽取 `loading.strokeWidth`，色调取语义色。",
       preview = { DocLoadingSizeAndTonePreview() },
       code = listOf(
-        "LhLoading(size = LhLoadingSize.large, tone = LhLoadingTone.primary)",
+        "LhLoading(lhSize = LhLoadingSize.large, tone = LhLoadingTone.primary)",
       ),
     ),
   ),
   props = listOf(
-    DocRow(cells = listOf("`size`", "指示器直径", "`LhLoadingSize`", "`Medium`")),
+    DocRow(cells = listOf("`lhSize`", "指示器直径", "`LhLoadingSize`", "`Medium`")),
     DocRow(cells = listOf("`tone`", "环色", "`LhLoadingTone`", "`Primary`")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
   ),

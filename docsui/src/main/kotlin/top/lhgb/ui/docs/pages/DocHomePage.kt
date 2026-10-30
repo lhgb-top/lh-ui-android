@@ -97,7 +97,7 @@ private fun DocHomeItem(title: String, lede: String, onClick: () -> Unit) {
     // 右侧箭头：明确的「可点击」affordance
     LhIcon(
       name = "chevron-right",
-      size = LhIconSize.medium,
+      lhSize = LhIconSize.medium,
       tone = LhIconTone.secondary,
       contentDescription = null,
     )

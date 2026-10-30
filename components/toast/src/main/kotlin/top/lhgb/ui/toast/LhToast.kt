@@ -42,14 +42,14 @@ private const val NANOS_PER_MILLI = 1_000_000
  * @param state 轻提示状态机（承载可见性、文字与计时）
  * @param modifier 修饰符（作用于胶囊）
  * @param type 语义类型；非 default 时在文字前绘制对应语义色圆点
- * @param position 在可用区域内的定位；上下两端留 spacing.xl 边距
+ * @param lhPosition 在可用区域内的定位；上下两端留 spacing.xl 边距
  */
 @Composable
 fun LhToast(
   state: LhToastState,
   modifier: Modifier = Modifier,
   type: LhToastType = LhToastType.default,
-  position: LhToastPosition = LhToastPosition.center,
+  lhPosition: LhToastPosition = LhToastPosition.center,
 ) {
   val colors: LhColors = LhThemeColors
   val appearance = LhToastDefaults.resolve(type, colors)
@@ -72,12 +72,12 @@ fun LhToast(
   if (!state.visible) return
 
   val marginPx = with(LocalDensity.current) { LhTokens.Spacing.xl.roundToPx() }
-  val popupAlignment = when (position) {
+  val popupAlignment = when (lhPosition) {
     LhToastPosition.top -> Alignment.TopCenter
     LhToastPosition.center -> Alignment.Center
     LhToastPosition.bottom -> Alignment.BottomCenter
   }
-  val popupOffset = when (position) {
+  val popupOffset = when (lhPosition) {
     LhToastPosition.top -> IntOffset(0, marginPx)
     LhToastPosition.center -> IntOffset.Zero
     LhToastPosition.bottom -> IntOffset(0, -marginPx)

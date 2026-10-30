@@ -35,7 +35,7 @@ fun DocPreviewScope.DocLoadingSizeAndTonePreview() {
           fontSize = LhTokens.Typography.FontSize.small,
           modifier = Modifier.weight(1f),
         )
-        LhLoadingSize.entries.forEach { size -> LhLoading(tone = tone, size = size) }
+        LhLoadingSize.entries.forEach { size -> LhLoading(tone = tone, lhSize = size) }
       }
     }
   }

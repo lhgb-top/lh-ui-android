@@ -45,7 +45,7 @@ fun DocPreviewScope.DocTagSizeAndMarkPreview() {
     verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs),
   ) {
     LhTagSize.entries.forEach { size ->
-      LhTag(text = size.name, type = LhTagType.primary, size = size)
+      LhTag(text = size.name, type = LhTagType.primary, lhSize = size)
     }
   }
   FlowRow(

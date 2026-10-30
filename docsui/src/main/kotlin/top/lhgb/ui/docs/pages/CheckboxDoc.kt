@@ -41,7 +41,7 @@ val checkboxDoc = DocEntry(
     DocRow(cells = listOf("`indeterminate`", "是否半选（不确定态）", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`disabled`", "是否禁用", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`label`", "标签文字", "`String?`", "`null`")),
-    DocRow(cells = listOf("`size`", "方框尺寸", "`LhCheckboxSize`", "`Medium`")),
+    DocRow(cells = listOf("`lhSize`", "方框尺寸", "`LhCheckboxSize`", "`Medium`")),
     DocRow(cells = listOf("`labelContent`", "标签内容（覆盖 label，spec 的 default 插槽）", "`@Composable (() -> Unit)?`", "`null`")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
   ),

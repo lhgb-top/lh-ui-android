@@ -24,7 +24,7 @@ val buttonDoc = DocEntry(
       prose = "六种类型决定底色与文字色。",
       preview = { DocButtonTypesPreview() },
       code = listOf(
-        "LhButton(type = LhButtonType.Primary, onClick = {}) { Text(\"主要按钮\") }",
+        "LhButton(type = LhButtonType.Primary, lhOnClick = {}) { Text(\"主要按钮\") }",
       ),
     ),
     DocSection(
@@ -34,7 +34,7 @@ val buttonDoc = DocEntry(
     ),
     DocSection(
       title = "状态",
-      prose = "禁用与加载中都不触发 `onClick`；两者共存时按禁用优先处理（黄金用例 `disabled-precedes-loading`）。",
+      prose = "禁用与加载中都不触发 `lhOnClick`；两者共存时按禁用优先处理（黄金用例 `disabled-precedes-loading`）。",
       preview = { DocButtonStatesPreview() },
     ),
     DocSection(
@@ -49,12 +49,12 @@ val buttonDoc = DocEntry(
     ),
   ),
   props = listOf(
-    DocRow(cells = listOf("`onClick`", "点击回调；`disabled` 或 `loading` 为 true 时不触发", "`() -> Unit`", "—")),
+    DocRow(cells = listOf("`lhOnClick`", "点击回调；`disabled` 或 `loading` 为 true 时不触发", "`() -> Unit`", "—")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
     DocRow(cells = listOf("`type`", "按钮类型，决定底色与文字色", "`LhButtonType`", "`Default`")),
-    DocRow(cells = listOf("`size`", "按钮尺寸，映射到尺寸令牌", "`LhButtonSize`", "`Medium`")),
+    DocRow(cells = listOf("`lhSize`", "按钮尺寸，映射到尺寸令牌", "`LhButtonSize`", "`Medium`")),
     DocRow(cells = listOf("`disabled`", "是否禁用", "`Boolean`", "`false`")),
-    DocRow(cells = listOf("`loading`", "是否加载中（显示指示器，不触发 onClick）", "`Boolean`", "`false`")),
+    DocRow(cells = listOf("`loading`", "是否加载中（显示指示器，不触发 lhOnClick）", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`icon`", "图标名（本地图标体系解析）", "`String?`", "`null`")),
     DocRow(cells = listOf("`bgPattern`", "是否绘制国风花纹底纹", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`content`", "按钮文字内容（spec 的 default 插槽）", "`@Composable () -> Unit`", "—")),
@@ -98,7 +98,7 @@ val buttonDoc = DocEntry(
     DocRow(cells = listOf("`motion.duration.fast` / `motion.easing.easeInOut`", "按压反馈动效")),
   ),
   cases = listOf(
-    DocRow(cells = listOf("`click-emits-onclick`", "点击触发 onClick ×1", "`LhButtonTest.click_emits_onClick`（Compose UI Test）")),
+    DocRow(cells = listOf("`click-emits-onclick`", "点击触发 lhOnClick ×1", "`LhButtonTest.click_emits_onClick`（Compose UI Test）")),
     DocRow(cells = listOf("`disabled-blocks-click`", "禁用态不触发", "`LhButtonTest.disabled_blocks_click`")),
     DocRow(cells = listOf("`loading-blocks-click`", "加载态不触发", "`LhButtonTest.loading_blocks_click`")),
     DocRow(cells = listOf("`disabled-precedes-loading`", "禁用优先", "`LhButtonTest.disabled_precedes_loading_blocks_click` + `LhButtonDefaultsTest.disabled_precedes_loading`")),

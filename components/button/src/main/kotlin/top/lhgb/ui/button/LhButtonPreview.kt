@@ -18,7 +18,7 @@ import top.lhgb.ui.theme.LhTheme
 @Preview(showBackground = true, name = "类型：default")
 @Composable
 private fun LhButtonTypeDefaultPreview() {
-  LhTheme { LhButton(onClick = {}) { Text("默认按钮") } }
+  LhTheme { LhButton(lhOnClick = {}) { Text("默认按钮") } }
 }
 
 @Preview(showBackground = true, name = "类型：全部")
@@ -26,15 +26,15 @@ private fun LhButtonTypeDefaultPreview() {
 private fun LhButtonAllTypesPreview() {
   LhTheme {
     Column {
-      LhButton(type = LhButtonType.primary, onClick = {}) { Text("主要按钮") }
+      LhButton(type = LhButtonType.primary, lhOnClick = {}) { Text("主要按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.success, onClick = {}) { Text("成功按钮") }
+      LhButton(type = LhButtonType.success, lhOnClick = {}) { Text("成功按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.warning, onClick = {}) { Text("警告按钮") }
+      LhButton(type = LhButtonType.warning, lhOnClick = {}) { Text("警告按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.danger, onClick = {}) { Text("危险按钮") }
+      LhButton(type = LhButtonType.danger, lhOnClick = {}) { Text("危险按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.info, onClick = {}) { Text("信息按钮") }
+      LhButton(type = LhButtonType.info, lhOnClick = {}) { Text("信息按钮") }
     }
   }
 }
@@ -44,11 +44,11 @@ private fun LhButtonAllTypesPreview() {
 private fun LhButtonSizesPreview() {
   LhTheme {
     Column {
-      LhButton(size = LhButtonSize.small, onClick = {}) { Text("小型按钮") }
+      LhButton(lhSize = LhButtonSize.small, lhOnClick = {}) { Text("小型按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(size = LhButtonSize.medium, onClick = {}) { Text("中型按钮") }
+      LhButton(lhSize = LhButtonSize.medium, lhOnClick = {}) { Text("中型按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(size = LhButtonSize.large, onClick = {}) { Text("大型按钮") }
+      LhButton(lhSize = LhButtonSize.large, lhOnClick = {}) { Text("大型按钮") }
     }
   }
 }
@@ -58,11 +58,11 @@ private fun LhButtonSizesPreview() {
 private fun LhButtonStatesPreview() {
   LhTheme {
     Column {
-      LhButton(type = LhButtonType.primary, disabled = true, onClick = {}) { Text("禁用按钮") }
+      LhButton(type = LhButtonType.primary, disabled = true, lhOnClick = {}) { Text("禁用按钮") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.primary, loading = true, onClick = {}) { Text("加载中") }
+      LhButton(type = LhButtonType.primary, loading = true, lhOnClick = {}) { Text("加载中") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.primary, disabled = true, loading = true, onClick = {}) { Text("禁用优先") }
+      LhButton(type = LhButtonType.primary, disabled = true, loading = true, lhOnClick = {}) { Text("禁用优先") }
     }
   }
 }
@@ -72,9 +72,9 @@ private fun LhButtonStatesPreview() {
 private fun LhButtonIconAndPatternPreview() {
   LhTheme {
     Column {
-      LhButton(type = LhButtonType.primary, icon = "search", onClick = {}) { Text("搜索") }
+      LhButton(type = LhButtonType.primary, icon = "search", lhOnClick = {}) { Text("搜索") }
       Spacer(Modifier.height(8.dp))
-      LhButton(type = LhButtonType.primary, bgPattern = true, onClick = {}) { Text("花纹底") }
+      LhButton(type = LhButtonType.primary, bgPattern = true, lhOnClick = {}) { Text("花纹底") }
     }
   }
 }

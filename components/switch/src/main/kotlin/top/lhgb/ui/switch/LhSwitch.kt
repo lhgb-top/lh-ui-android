@@ -38,7 +38,7 @@ import top.lhgb.ui.tokens.LhTokens
  * @param modifier 修饰符
  * @param disabled 是否禁用
  * @param loading 是否加载中（滑块位置改画加载环，且不响应点击）
- * @param size 尺寸档位
+ * @param lhSize 尺寸档位
  */
 @Composable
 fun LhSwitch(
@@ -47,11 +47,11 @@ fun LhSwitch(
   modifier: Modifier = Modifier,
   disabled: Boolean = false,
   loading: Boolean = false,
-  size: LhSwitchSize = LhSwitchSize.medium,
+  lhSize: LhSwitchSize = LhSwitchSize.medium,
 ) {
   val colors: LhColors = LhThemeColors
-  val appearance = remember(size, checked, disabled, loading, colors) {
-    LhSwitchDefaults.resolve(size, checked, disabled, loading, colors)
+  val appearance = remember(lhSize, checked, disabled, loading, colors) {
+    LhSwitchDefaults.resolve(lhSize, checked, disabled, loading, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
 

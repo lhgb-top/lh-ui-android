@@ -36,7 +36,7 @@ import top.lhgb.ui.theme.LhThemeColors
  * @param disabled 是否禁用
  * @param label 文字标签（绘制在圆环右侧）
  * @param value 单选值（组内标识，组件本身不含组逻辑，由宿主维护单选组）
- * @param size 圆环尺寸档位
+ * @param lhSize 圆环尺寸档位
  * @param labelContent 标签内容（覆盖 label，spec 的 default 插槽）
  */
 @Composable
@@ -47,12 +47,12 @@ fun LhRadio(
   disabled: Boolean = false,
   label: String? = null,
   value: String? = null,
-  size: LhRadioSize = LhRadioSize.medium,
+  lhSize: LhRadioSize = LhRadioSize.medium,
   labelContent: @Composable (() -> Unit)? = null,
 ) {
   val colors: LhColors = LhThemeColors
-  val appearance = remember(size, checked, disabled, colors) {
-    LhRadioDefaults.resolve(size, checked, disabled, colors)
+  val appearance = remember(lhSize, checked, disabled, colors) {
+    LhRadioDefaults.resolve(lhSize, checked, disabled, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
 

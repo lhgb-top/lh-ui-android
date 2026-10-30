@@ -40,8 +40,8 @@ fun DocPreviewScope.DocSwitchSizesPreview() {
     modifier = Modifier.fillMaxWidth(),
     horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.lg),
   ) {
-    LhSwitch(checked = onSmall, onChange = { onSmall = it }, size = LhSwitchSize.small)
-    LhSwitch(checked = onMedium, onChange = { onMedium = it }, size = LhSwitchSize.medium)
-    LhSwitch(checked = onLarge, onChange = { onLarge = it }, size = LhSwitchSize.large)
+    LhSwitch(checked = onSmall, onChange = { onSmall = it }, lhSize = LhSwitchSize.small)
+    LhSwitch(checked = onMedium, onChange = { onMedium = it }, lhSize = LhSwitchSize.medium)
+    LhSwitch(checked = onLarge, onChange = { onLarge = it }, lhSize = LhSwitchSize.large)
   }
 }

@@ -77,8 +77,8 @@ fun LhDocsHost(
         onLeftClick = { backStack.removeLastOrNull() },
         rightContent = {
           LhButton(
-            size = top.lhgb.ui.button.LhButtonSize.small,
-            onClick = { onDarkChange(!dark) },
+            lhSize = top.lhgb.ui.button.LhButtonSize.small,
+            lhOnClick = { onDarkChange(!dark) },
           ) { androidx.compose.material3.Text(if (dark) "亮色" else "暗色") }
         },
       )
@@ -121,7 +121,7 @@ fun LhDocsHost(
     }
 
     // 全局 Toast：所有预览的 showToast 最终落到这里
-    LhToast(state = toast, position = toastPosition)
+    LhToast(state = toast, lhPosition = toastPosition)
   }
 }
 

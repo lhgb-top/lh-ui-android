@@ -44,7 +44,7 @@ val radioDoc = DocEntry(
     DocRow(cells = listOf("`disabled`", "是否禁用", "`Boolean`", "`false`")),
     DocRow(cells = listOf("`label`", "标签文字", "`String?`", "`null`")),
     DocRow(cells = listOf("`value`", "单选值（组内标识，组件本身不含组逻辑）", "`String?`", "`null`")),
-    DocRow(cells = listOf("`size`", "圆环尺寸", "`LhRadioSize`", "`Medium`")),
+    DocRow(cells = listOf("`lhSize`", "圆环尺寸", "`LhRadioSize`", "`Medium`")),
     DocRow(cells = listOf("`labelContent`", "标签内容（覆盖 label，spec 的 default 插槽）", "`@Composable (() -> Unit)?`", "`null`")),
     DocRow(cells = listOf("`modifier`", "修饰符", "`Modifier`", "`Modifier`")),
   ),
