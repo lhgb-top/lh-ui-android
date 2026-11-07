@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-android
   text: سلالة أصلية · Android
   tagline: مكتبة مكوّنات بلغة Kotlin + Jetpack Compose، مدفوعة بالرموز، متوافقة مع العقد، تحرسها الحالات الذهبية

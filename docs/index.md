@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-android
   text: 原生血脉 · Android 端
   tagline: Kotlin + Jetpack Compose 组件库，令牌驱动、契约对齐、黄金用例守护

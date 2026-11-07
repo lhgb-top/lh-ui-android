@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-android
   text: Lignée native · Android
   tagline: Bibliothèque de composants en Kotlin + Jetpack Compose, pilotée par les jetons, alignée sur les contrats, gardée par les cas dorés

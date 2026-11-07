@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-android
   text: ネイティブ血脈 · Android 端
   tagline: Kotlin + Jetpack Compose コンポーネントライブラリ、トークン駆動・契約アラインメント・ゴールデンケースによる保護

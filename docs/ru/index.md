@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /logo-banner.png
+    alt: lh-ui 品牌横幅
   name: lh-ui-android
   text: Нативное направление · Android
   tagline: "Библиотека компонентов на Kotlin + Jetpack Compose: токены дизайна, согласованность с контрактами, защита золотыми сценариями"
