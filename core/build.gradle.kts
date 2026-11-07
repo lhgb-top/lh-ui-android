@@ -29,7 +29,8 @@ android {
   }
 
   // 令牌源集：top/lhgb/ui/tokens/ 由 scripts/link-tokens.mjs 从 ../lh-ui-core/dist/android
-  // 同步（生成物，gitignore）。家族布局不存在时回退 Maven 令牌包（nM6 打通后）。
+  // 同步（生成物，gitignore）。D22：令牌编译进主库产物（单坐标 top.lhgb.ui:android），
+  // 不单独发令牌包；开发态走 link:tokens 三级存在性守卫（本地 dist → npm → 报错）。
   sourceSets {
     getByName("main").java.srcDirs("src/main/kotlin")
   }
