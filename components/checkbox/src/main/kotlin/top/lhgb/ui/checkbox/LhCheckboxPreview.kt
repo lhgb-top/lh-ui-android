@@ -12,8 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -26,8 +26,8 @@ private fun LhCheckboxStatesPreview() {
   LhTheme {
     var checked by remember { mutableStateOf(false) }
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       LhCheckbox(checked = false, onCheckedChange = {}, label = "未选中")
       LhCheckbox(checked = true, onCheckedChange = {}, label = "已选中")
@@ -48,8 +48,8 @@ private fun LhCheckboxStatesPreview() {
 private fun LhCheckboxSizesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
       verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
     ) {
       LhCheckbox(checked = true, onCheckedChange = {}, lhSize = LhCheckboxSize.small)
@@ -64,8 +64,8 @@ private fun LhCheckboxSizesPreview() {
 private fun LhCheckboxIndeterminateSizesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
       verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
     ) {
       LhCheckbox(checked = false, indeterminate = true, onCheckedChange = {}, lhSize = LhCheckboxSize.small)

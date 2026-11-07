@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="lh_confirm">Confirm</string>
+  <string name="lh_cancel">Cancel</string>
+
+  <string name="lh_a11y_left">Left side</string>
+  <string name="lh_a11y_right">Right side</string>
+  <string name="lh_a11y_close">Close</string>
+  <string name="lh_a11y_clear">Clear</string>
+  <string name="lh_a11y_overlay">Overlay</string>
+
+  <string name="lh_state_on">On</string>
+  <string name="lh_state_off">Off</string>
+  <string name="lh_state_checked">Checked</string>
+  <string name="lh_state_unchecked">Not checked</string>
+  <string name="lh_state_indeterminate">Indeterminate</string>
+
+</resources>

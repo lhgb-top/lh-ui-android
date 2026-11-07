@@ -1,28 +1,34 @@
 package top.lhgb.ui.docsapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import top.lhgb.ui.docs.LhDocsHost
-import top.lhgb.ui.theme.LhTheme
+import androidx.activity.enableEdgeToEdge
+import top.lhgb.ui.docs.LhDocsContent
+import top.lhgb.ui.locale.LhAppLocale
 
 /**
- * 独立文档 APP 的唯一入口（LAUNCHER）。:docsapp 是极薄的 application 模块，
- * 完整文档能力全部在 :docsui 库里——本 Activity 只负责挂 LhTheme + 导航宿主。
+ * 独立文档 APP 的唯一入口（LAUNCHER）。
+ *
+ * 极薄壳：内容组合复用 docsui 的 [LhDocsContent]（edge-to-edge、跟随系统暗色、
+ * 状态栏图标外观均托管其中），保证独立 APP 与嵌入宿主看到的文档 UI 完全一致。
+ * 语言切换由 docsui 顶栏的地球按钮驱动（`LhAppLocale` 持久化 + 本 Activity
+ * `attachBaseContext` 覆盖 + relaunch 即时生效）。
  */
 class LhDocsAppActivity : ComponentActivity() {
 
+  override fun attachBaseContext(newBase: Context) {
+    // recreate() 不刷新 base context，切换语言走 finish + startActivity 重建，
+    // 新实例重新走这里读到持久化的 override
+    super.attachBaseContext(LhAppLocale.applyConfig(newBase))
+  }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
     setContent {
-      var dark by rememberSaveable { mutableStateOf(false) }
-      LhTheme(dark = dark) {
-        LhDocsHost(dark = dark, onDarkChange = { dark = it })
-      }
+      LhDocsContent()
     }
   }
 }

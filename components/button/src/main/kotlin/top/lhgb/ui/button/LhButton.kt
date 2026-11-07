@@ -12,6 +12,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
@@ -46,6 +48,8 @@ object LhButtonIcons {
     "refresh" to Icons.Filled.Refresh,
     "check" to Icons.Filled.Check,
     "close" to Icons.Filled.Close,
+    "moon" to Icons.Filled.DarkMode,
+    "sun" to Icons.Filled.LightMode,
   )
 
   fun resolve(name: String?): ImageVector? = name?.let { icons[it] }

@@ -46,7 +46,7 @@ class LhPickerTest {
         )
       }
     }
-    composeRule.onNodeWithText("确认").assertIsDisplayed().performClick()
+    composeRule.onNodeWithText(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_confirm)).assertIsDisplayed().performClick()
     assertEquals("确认应携带当前选中索引", 1, confirmValue)
     assertEquals("确认后应触发 onClose", 1, closes)
   }
@@ -68,7 +68,7 @@ class LhPickerTest {
         )
       }
     }
-    composeRule.onNodeWithText("取消").assertIsDisplayed().performClick()
+    composeRule.onNodeWithText(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_cancel)).assertIsDisplayed().performClick()
     assertEquals("取消应触发 onCancel", 1, cancels)
     assertEquals("取消后应触发 onClose", 1, closes)
   }
@@ -159,6 +159,6 @@ class LhPickerTest {
       }
     }
     composeRule.onNodeWithText("甲").assertIsDisplayed()
-    composeRule.onNodeWithText("确认").assertIsDisplayed()
+    composeRule.onNodeWithText(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_confirm)).assertIsDisplayed()
   }
 }

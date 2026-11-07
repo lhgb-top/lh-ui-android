@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">lh-ui Docs</string>
+
+  <string name="doc_home_heading">lh-ui-android Component Docs</string>
+  <string name="doc_home_lede">Native bloodline · Kotlin + Jetpack Compose component library, token-driven, spec-aligned, guarded by golden cases.</string>
+  <string name="doc_home_hint">Previews are real Compose renders, fully interactive.</string>
+
+  <string name="doc_group_guide">Guides</string>
+  <string name="doc_group_basic">Basic components</string>
+  <string name="doc_group_form">Form components</string>
+  <string name="doc_group_overlay">Feedback and overlay</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">Tokens</string>
+  <string name="doc_section_cases">Golden cases</string>
+  <string name="doc_section_local">Local verification</string>
+
+  <string name="doc_prop_name">Prop</string>
+  <string name="doc_prop_desc">Description</string>
+  <string name="doc_prop_type">Type</string>
+  <string name="doc_prop_default">Default</string>
+
+  <string name="doc_token_name">Token</string>
+  <string name="doc_token_usage">Usage</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">Assertion</string>
+  <string name="doc_case_test">Local test</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">Tokens</string>
+  <string name="doc_table_cases">Cases</string>
+
+  <string name="doc_copied">Copied</string>
+  <string name="doc_a11y_copy">Copy code</string>
+  <string name="doc_a11y_toggle_theme">Toggle light/dark theme</string>
+  <string name="doc_preview_caption">Live preview (real Compose render, interactive)</string>
+
+  <string name="doc_lang_title">Language</string>
+
+</resources>

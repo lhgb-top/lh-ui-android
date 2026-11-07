@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  独立文档 APP 启动图标（minSdk 24 支持 vector 即可，无需 PNG 倍图）。
+  背景色 #2B4C7C = LhTokens.Color.Primary.default（青花瓷主色；res 无法引用
+  Kotlin 侧令牌，此为唯一允许的镜像，改令牌时同步改这里）。前景为白色 "lh" 字形。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+  <path
+      android:fillColor="#2B4C7C"
+      android:pathData="M0,0h108v108h-108z" />
+
+  <!-- "l" 字形 -->
+  <path
+      android:strokeColor="#FFFFFF"
+      android:strokeWidth="7"
+      android:strokeLineCap="round"
+      android:pathData="M38,76 V38" />
+
+  <!-- "h" 字形：左竖 + 中部右拱 + 右竖 -->
+  <path
+      android:strokeColor="#FFFFFF"
+      android:strokeWidth="7"
+      android:strokeLineCap="round"
+      android:fillColor="#00000000"
+      android:pathData="M60,76 V38 M60,56 Q68,46 76,56 V76" />
+
+</vector>

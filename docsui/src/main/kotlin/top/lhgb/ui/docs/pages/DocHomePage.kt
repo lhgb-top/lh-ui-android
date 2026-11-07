@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import top.lhgb.ui.docs.widgets.DocCard
 import top.lhgb.ui.docs.widgets.DocDivider
@@ -45,16 +46,16 @@ fun DocHomePage(
     verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.lg),
   ) {
     Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
-      DocHeading("lh-ui-android 组件文档", level = 1)
-      DocProse("原生血脉 · Kotlin + Jetpack Compose 组件库，令牌驱动、契约对齐、黄金用例守护。")
-      DocProse("预览均为真 Compose 实时渲染，可交互。", secondary = true)
+      DocHeading(stringResource(top.lhgb.ui.docsui.R.string.doc_home_heading), level = 1)
+      DocProse(stringResource(top.lhgb.ui.docsui.R.string.doc_home_lede))
+      DocProse(stringResource(top.lhgb.ui.docsui.R.string.doc_home_hint), secondary = true)
     }
 
     top.lhgb.ui.docs.model.DocGroup.entries.forEach { group ->
       val groupEntries = entries.filter { it.group == group }
       if (groupEntries.isEmpty()) return@forEach
       Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
-        DocHeading(group.label, level = 2)
+        DocHeading(stringResource(group.labelRes), level = 2)
         DocCard {
           groupEntries.forEachIndexed { index, entry ->
             if (index > 0) DocDivider()

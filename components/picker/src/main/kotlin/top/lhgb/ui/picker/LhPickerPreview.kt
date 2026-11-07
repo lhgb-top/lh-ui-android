@@ -13,8 +13,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -48,7 +48,7 @@ private fun LhPickerHostDrivenPreview() {
   var selected by remember { mutableStateOf(0) }
   LhTheme {
     Column(
-      modifier = Modifier.fillMaxSize().padding(16.dp),
+      modifier = Modifier.fillMaxSize().padding(LhTokens.Spacing.base),
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       Button(onClick = { visible = true }) { Text("弹出选择器（当前：${previewOptions[selected]}）") }

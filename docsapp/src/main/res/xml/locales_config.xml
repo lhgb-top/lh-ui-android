@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  per-app 语言清单（API 33+ 的系统「应用语言」设置读这里）。
+  与 LhAppLocale.SUPPORTED 一致：根目录中文 + 八语言。
+-->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <locale android:name="zh-CN" />
+  <locale android:name="en-US" />
+  <locale android:name="zh-TW" />
+  <locale android:name="ja-JP" />
+  <locale android:name="ko-KR" />
+  <locale android:name="es" />
+  <locale android:name="fr-FR" />
+  <locale android:name="ru" />
+  <locale android:name="ar" />
+
+</locale-config>

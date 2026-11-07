@@ -11,8 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -24,8 +24,8 @@ import top.lhgb.ui.theme.LhTheme
 private fun LhIconSizesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
     ) {
       LhIcon(name = "star", lhSize = LhIconSize.small)
       LhIcon(name = "star", lhSize = LhIconSize.medium)
@@ -39,8 +39,8 @@ private fun LhIconSizesPreview() {
 private fun LhIconTonesPreview() {
   LhTheme {
     Column(
-      modifier = Modifier.padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(8.dp),
+      modifier = Modifier.padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     ) {
       listOf(
         "default" to LhIconTone.default,
@@ -54,7 +54,7 @@ private fun LhIconTonesPreview() {
       ).forEach { (label, tone) ->
         Row(
           modifier = Modifier.fillMaxWidth(),
-          horizontalArrangement = Arrangement.spacedBy(12.dp),
+          horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
         ) {
           LhIcon(name = "star", tone = tone)
           Text(label)
@@ -69,8 +69,8 @@ private fun LhIconTonesPreview() {
 private fun LhIconClickablePreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
     ) {
       LhIcon(name = "search", tone = LhIconTone.primary, lhOnClick = {})
       LhIcon(name = "plus", tone = LhIconTone.primary, lhOnClick = {})
@@ -83,9 +83,9 @@ private fun LhIconClickablePreview() {
 @Composable
 private fun LhIconUnknownNamePreview() {
   LhTheme {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(LhTokens.Spacing.base)) {
       Text("下方有一个未登记名的图标（不绘制、不崩）：")
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhIcon(name = "not-registered-icon")
     }
   }

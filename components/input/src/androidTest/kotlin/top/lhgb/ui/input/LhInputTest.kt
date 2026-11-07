@@ -47,7 +47,7 @@ class LhInputTest {
         LhInput(value = text, onValueChange = { text = it }, clearable = true)
       }
     }
-    composeRule.onNodeWithContentDescription("清除").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_clear)).performClick()
     assertEquals("清除按钮应触发 onValueChange(\"\")", "", text)
   }
 

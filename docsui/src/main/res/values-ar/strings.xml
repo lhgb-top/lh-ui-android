@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">وثائق lh-ui</string>
+
+  <string name="doc_home_heading">وثائق مكوّنات lh-ui-android</string>
+  <string name="doc_home_lede">سلالة أصلية · مكتبة مكوّنات بـ Kotlin + Jetpack Compose، مدفوعة بالرموز، ومحاذية للعقود ومحمية بحالات الاختبار المرجعية.</string>
+  <string name="doc_home_hint">المعاينات هي تصيير Compose حقيقي وتفاعلية.</string>
+
+  <string name="doc_group_guide">أدلة</string>
+  <string name="doc_group_basic">المكوّنات الأساسية</string>
+  <string name="doc_group_form">مكوّنات النماذج</string>
+  <string name="doc_group_overlay">التغذية الراجعة والتراكبات</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">الرموز</string>
+  <string name="doc_section_cases">الحالات المرجعية</string>
+  <string name="doc_section_local">التحقق المحلي</string>
+
+  <string name="doc_prop_name">الخاصية</string>
+  <string name="doc_prop_desc">الوصف</string>
+  <string name="doc_prop_type">النوع</string>
+  <string name="doc_prop_default">الافتراضي</string>
+
+  <string name="doc_token_name">الرمز</string>
+  <string name="doc_token_usage">الاستخدام</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">التأكيد</string>
+  <string name="doc_case_test">الاختبار المحلي</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">الرموز</string>
+  <string name="doc_table_cases">الحالات</string>
+
+  <string name="doc_copied">تم النسخ</string>
+  <string name="doc_a11y_copy">نسخ الرمز</string>
+  <string name="doc_a11y_toggle_theme">تبديل السمة الفاتحة/الداكنة</string>
+  <string name="doc_preview_caption">معاينة مباشرة (تصيير Compose حقيقي، تفاعلية)</string>
+
+  <string name="doc_lang_title">اللغة</string>
+
+</resources>

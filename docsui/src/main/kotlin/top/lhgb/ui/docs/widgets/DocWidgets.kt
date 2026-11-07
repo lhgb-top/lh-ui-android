@@ -1,18 +1,23 @@
 package top.lhgb.ui.docs.widgets
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -20,8 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -30,6 +40,9 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import top.lhgb.ui.docs.model.DocTable
+import top.lhgb.ui.icon.LhIcon
+import top.lhgb.ui.icon.LhIconSize
+import top.lhgb.ui.icon.LhIconTone
 import top.lhgb.ui.tokens.LhTokens
 
 /** 文档 UI 统一取色入口（明/暗由 LhTheme 切换，docs 令牌颜色全部 ref 到 color.*）。 */
@@ -39,14 +52,28 @@ private val heading get() = LhTokens.Docs.Heading
 private val prose get() = LhTokens.Docs.Prose
 private val card get() = LhTokens.Docs.Card
 
-/** 从字体栈令牌取首个族名构造 Compose FontFamily（等宽代码字体）。 */
+/**
+ * 等宽代码字体：Android 端对 [Docs.Code.fontFamily] 字体栈的解析。
+ *
+ * Gotcha：`Typeface.create(familyName, …)` 对不存在的族名静默回退到默认字体
+ * （Source Code Pro 在 Android 系统字体中不存在），程序上无法逐族探测可用性；
+ * 平台等宽（`FontFamily.Monospace`）是字体栈在本端的正确兜底解析。
+ */
 @Composable
-fun rememberMonoFontFamily(): FontFamily = remember {
-  val first = code.fontFamily.substringBefore(',').trim().trim('\'')
-  FontFamily(android.graphics.Typeface.create(first, android.graphics.Typeface.NORMAL))
-}
+fun rememberMonoFontFamily(): FontFamily = remember { FontFamily.Monospace }
 
-/** 标题阶：H1 页面标题 / H2 章节 / H3 小节。字号与颜色全部取令牌。 */
+/**
+ * 国风衬线标题字体：Android 端对 `Typography.fontFamily` 字体栈的解析。
+ *
+ * Gotcha：与等宽字体同理，`Typeface.create("Noto Serif SC", …)` 无法探测族名是否
+ * 存在（不存在时静默回退默认无衬线）；而 Compose 的 `FontFamily.Serif` 在 Android
+ * 恰好解析到系统的 serif 家族（含 CJK 的 Noto Serif），即字体栈「首个可用族」的
+ * 平台等价物。仅用于标题阶，正文保持无衬线保证小字可读性。
+ */
+@Composable
+fun rememberLhSerifFontFamily(): FontFamily = remember { FontFamily.Serif }
+
+/** 标题阶：H1 页面标题 / H2 章节 / H3 小节。字号与颜色全部取令牌，标题用国风衬线。 */
 @Composable
 fun DocHeading(text: String, level: Int = 2) {
   val fontSize = when (level) {
@@ -58,6 +85,7 @@ fun DocHeading(text: String, level: Int = 2) {
     text = text,
     color = top.lhgb.ui.theme.LhThemeColors.textPrimary,
     fontSize = fontSize,
+    fontFamily = rememberLhSerifFontFamily(),
     fontWeight = FontWeight(LhTokens.Typography.FontWeight.bold),
     modifier = Modifier.padding(
       top = if (level == 1) LhTokens.Spacing.xs else LhTokens.Spacing.lg,
@@ -115,26 +143,75 @@ fun DocCard(content: @Composable () -> Unit) {
   }
 }
 
-/** 代码块：等宽字体 + 宣纸底 + 圆角，逐行渲染。 */
+/**
+ * 代码块：等宽字体 + 宣纸底 + 圆角，逐行渲染。
+ *
+ * - 长代码行**不软换行**（softWrap = false），整块横向滚动，窄屏格式不被压折；
+ *   内容放得下时自然不滚（宽屏短代码无多余滚动条）。
+ * - [onCopied] 非空时右上角提供「一键复制」小图标按钮：一键写入全部代码行
+ *   （换行拼接）到系统剪贴板，并回调一次反馈（如弹全局 Toast「已复制」）。
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Suppress("DEPRECATION") // LocalClipboardManager：其替代品 LocalClipboard.setText 是 suspend + ClipEntry，
+// 点击即复制的场景用同步 API 足够，避免引入协程作用域
 @Composable
-fun DocCodeBlock(lines: List<String>) {
+fun DocCodeBlock(lines: List<String>, onCopied: (() -> Unit)? = null) {
+  val colors = top.lhgb.ui.theme.LhThemeColors
+  val clipboard = LocalClipboardManager.current
   val shape = RoundedCornerShape(code.borderRadius)
+  val scrollState = rememberScrollState()
+
   Column(
     modifier = Modifier
       .fillMaxWidth()
       .clip(shape)
-      .background(top.lhgb.ui.theme.LhThemeColors.backgroundDefault, shape)
-      .padding(horizontal = code.paddingX, vertical = code.paddingY),
-    verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs),
+      .background(colors.backgroundDefault, shape),
   ) {
-    lines.forEach { line ->
-      Text(
-        text = line,
-        color = top.lhgb.ui.theme.LhThemeColors.textRegular,
-        fontSize = code.fontSize,
-        fontFamily = rememberMonoFontFamily(),
-        lineHeight = code.fontSize * LhTokens.Typography.LineHeight.primary.toFloat(),
-      )
+    if (onCopied != null) {
+      Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.End,
+        verticalAlignment = Alignment.CenterVertically,
+      ) {
+        val interactionSource = remember { MutableInteractionSource() }
+        Box(
+          modifier = Modifier
+            .minimumInteractiveComponentSize()
+            .clickable(
+              interactionSource = interactionSource,
+              indication = ripple(color = colors.primary),
+            ) {
+              clipboard.setText(AnnotatedString(lines.joinToString("\n")))
+              onCopied()
+            }
+            .semantics { role = Role.Button },
+          contentAlignment = Alignment.Center,
+        ) {
+          LhIcon(
+            name = "content-copy",
+            lhSize = LhIconSize.small,
+            tone = LhIconTone.secondary,
+            contentDescription = stringResource(top.lhgb.ui.docsui.R.string.doc_a11y_copy),
+          )
+        }
+      }
+    }
+    Column(
+      modifier = Modifier
+        .horizontalScroll(scrollState)
+        .padding(horizontal = code.paddingX, vertical = code.paddingY),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs),
+    ) {
+      lines.forEach { line ->
+        Text(
+          text = line,
+          color = colors.textRegular,
+          fontSize = code.fontSize,
+          fontFamily = rememberMonoFontFamily(),
+          softWrap = false,
+          lineHeight = code.fontSize * LhTokens.Typography.LineHeight.primary.toFloat(),
+        )
+      }
     }
   }
 }
@@ -153,6 +230,11 @@ fun DocTable(tableData: DocTable) {
   val textMeasurer = rememberTextMeasurer()
   val scrollState = rememberScrollState()
   val headers = tableData.headers
+
+  // 表标题：「Props」「LhButtonType」等，此前该字段未被渲染，多表并存时无法区分
+  if (tableData.title.isNotEmpty()) {
+    DocHeading(tableData.title, level = 3)
+  }
 
   // 单元格最小内容宽度兜底：两倍内边距 + 一个基础间距令牌，保证任何列都至少能放下几个字。
   val minCellWidth = table.cellPaddingX * 2 + LhTokens.Spacing.md
@@ -192,6 +274,12 @@ fun DocTable(tableData: DocTable) {
 
   BoxWithConstraints(modifier = Modifier.fillMaxWidth().padding(vertical = LhTokens.Spacing.xs)) {
     val available = constraints.maxWidth.toFloat().coerceAtLeast(0f)
+    // 窄屏（手机竖屏）：表格折叠为字段卡片列表——每行一张卡，表头作字段小标签，
+    // 竖排平铺，不再横向滚动；宽屏（平板/横屏）保持表格形态。
+    if (maxWidth < table.narrowBreakpoint) {
+      DocTableCardList(tableData)
+      return@BoxWithConstraints
+    }
     // 放得下：按权重把余量分掉（首列 1.4，其余 1.0），宽屏视觉与均分一致；
     // 放不下：保持自然宽度，整表横向滚动，绝不把列压到无法阅读。
     val cellWidths: List<Float> = if (naturalCellWidths.sum() <= available && headers.isNotEmpty()) {
@@ -243,6 +331,42 @@ fun DocTable(tableData: DocTable) {
               )
             },
         )
+      }
+    }
+  }
+}
+
+/**
+ * 窄屏表格形态：每行数据折叠为一张字段卡片。
+ *
+ * 卡片内按列竖排：表头字段名作小标签（次要文字色 + 表格字号 + 粗体），
+ * 值跟在标签下方正常排布。所有颜色 / 尺寸 / 圆角取令牌，与 [DocCard] 同范式。
+ */
+@Composable
+private fun DocTableCardList(tableData: DocTable) {
+  val colors = top.lhgb.ui.theme.LhThemeColors
+  Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
+    tableData.rows.forEach { row ->
+      DocCard {
+        row.cells.forEachIndexed { i, cell ->
+          val label = tableData.headers.getOrElse(i) { null }
+          Column(verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xs)) {
+            if (label != null) {
+              Text(
+                text = label,
+                color = colors.textSecondary,
+                fontSize = table.fontSize,
+                fontWeight = FontWeight(LhTokens.Typography.FontWeight.bold),
+              )
+            }
+            Text(
+              text = cell,
+              color = colors.textRegular,
+              fontSize = table.fontSize,
+              lineHeight = table.fontSize * LhTokens.Typography.LineHeight.primary.toFloat(),
+            )
+          }
+        }
       }
     }
   }

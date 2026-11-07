@@ -1,6 +1,7 @@
 package top.lhgb.ui.docs.widgets
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,9 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.stringResource
 import top.lhgb.ui.tokens.LhTokens
 
 /**
@@ -35,17 +34,12 @@ fun DocPreviewFrame(
         .fillMaxWidth()
         .clip(RoundedCornerShape(LhTokens.Spacing.lg))
         .background(colors.backgroundDefault)
-        .drawBehind {
-          // 屏幕外框描边
-          val w = LhTokens.Docs.Card.borderWidth.toPx()
-          drawLine(
-            color = colors.borderLighter,
-            start = Offset(0f, size.height - w / 2f),
-            end = Offset(size.width, size.height - w / 2f),
-            strokeWidth = w,
-            cap = StrokeCap.Square,
-          )
-        },
+        // 屏幕外框描边（卡片令牌的边宽与边色，描整个圆角框而非仅底线）
+        .border(
+          width = LhTokens.Docs.Card.borderWidth,
+          color = colors.borderLighter,
+          shape = RoundedCornerShape(LhTokens.Spacing.lg),
+        ),
     ) {
       Column(modifier = Modifier.fillMaxWidth()) {
         // 状态栏
@@ -82,7 +76,7 @@ fun DocPreviewFrame(
       }
     }
     Text(
-      text = "实时预览（真 Compose 渲染，可交互）",
+      text = stringResource(top.lhgb.ui.docsui.R.string.doc_preview_caption),
       color = colors.textSecondary,
       fontSize = LhTokens.Docs.Prose.fontSize,
       modifier = Modifier.padding(top = LhTokens.Spacing.xs),

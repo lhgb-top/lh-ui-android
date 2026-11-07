@@ -41,7 +41,7 @@ class LhDialogTest {
         )
       }
     }
-    composeRule.onNodeWithText("确认").assertIsDisplayed().performClick()
+    composeRule.onNodeWithText(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_confirm)).assertIsDisplayed().performClick()
     assertEquals("确认按钮应触发 onConfirm", 1, confirms)
     assertEquals("确认后应触发 onClose", 1, closes)
   }
@@ -62,7 +62,7 @@ class LhDialogTest {
         )
       }
     }
-    composeRule.onNodeWithText("取消").assertIsDisplayed().performClick()
+    composeRule.onNodeWithText(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_cancel)).assertIsDisplayed().performClick()
     assertEquals("取消按钮应触发 onCancel", 1, cancels)
     assertEquals("取消后应触发 onClose", 1, closes)
   }
@@ -82,7 +82,7 @@ class LhDialogTest {
         )
       }
     }
-    composeRule.onNodeWithContentDescription("遮罩").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_overlay)).performClick()
     assertEquals("closable 时点遮罩应触发 onClose", 1, closes)
   }
 
@@ -101,7 +101,7 @@ class LhDialogTest {
         )
       }
     }
-    composeRule.onNodeWithContentDescription("遮罩").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_overlay)).performClick()
     assertEquals("非 closable 时点遮罩不应触发 onClose", 0, closes)
   }
 

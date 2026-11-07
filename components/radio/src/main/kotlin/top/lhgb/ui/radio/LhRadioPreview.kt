@@ -13,8 +13,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -26,8 +26,8 @@ import top.lhgb.ui.theme.LhTheme
 private fun LhRadioStatesPreview() {
   LhTheme {
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       LhRadio(checked = false, onChange = {}, label = "未选中")
       LhRadio(checked = true, onChange = {}, label = "已选中")
@@ -44,8 +44,8 @@ private fun LhRadioGroupPreview() {
     val options = remember { listOf("选项一" to "a", "选项二" to "b", "选项三" to "c") }
     var selected by remember { mutableStateOf("a") }
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       options.forEach { (text, value) ->
         LhRadio(
@@ -64,8 +64,8 @@ private fun LhRadioGroupPreview() {
 private fun LhRadioSizesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       LhRadio(checked = true, onChange = {}, lhSize = LhRadioSize.small)

@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
@@ -54,6 +55,10 @@ fun LhSwitch(
     LhSwitchDefaults.resolve(lhSize, checked, disabled, loading, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
+  val stateDesc = stringResource(
+    if (checked) top.lhgb.ui.core.R.string.lh_state_on
+    else top.lhgb.ui.core.R.string.lh_state_off,
+  )
 
   // 滑块行程：关闭时贴左侧（gap），开启时贴右侧
   val thumbOffset by animateDpAsState(
@@ -79,7 +84,7 @@ fun LhSwitch(
       }
       .semantics {
         role = Role.Switch
-        contentDescription = if (checked) "已开启" else "已关闭"
+        contentDescription = stateDesc
       },
     contentAlignment = Alignment.CenterStart,
   ) {

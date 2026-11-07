@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -23,8 +23,8 @@ import top.lhgb.ui.theme.LhTheme
 private fun LhTagAllTypesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(8.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     ) {
       LhTag(text = "默认")
       LhTag(text = "主色", type = LhTagType.primary)
@@ -41,8 +41,8 @@ private fun LhTagAllTypesPreview() {
 private fun LhTagPlainPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(8.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     ) {
       LhTag(text = "主色", type = LhTagType.primary, plain = true)
       LhTag(text = "成功", type = LhTagType.success, plain = true)
@@ -58,15 +58,15 @@ private fun LhTagPlainPreview() {
 private fun LhTagSizesPreview() {
   LhTheme {
     Column(
-      modifier = Modifier.padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(8.dp),
+      modifier = Modifier.padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     ) {
-      Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+      Row(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
         LhTag(text = "小", lhSize = LhTagSize.small)
         LhTag(text = "中", lhSize = LhTagSize.medium)
         LhTag(text = "大", lhSize = LhTagSize.large)
       }
-      Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+      Row(horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm)) {
         LhTag(text = "胶囊", round = true)
         LhTag(text = "胶囊主色", type = LhTagType.primary, round = true)
       }
@@ -79,8 +79,8 @@ private fun LhTagSizesPreview() {
 private fun LhTagClosablePreview() {
   LhTheme {
     Column(
-      modifier = Modifier.padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(8.dp),
+      modifier = Modifier.padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
     ) {
       LhTag(text = "可关闭", closable = true, onClose = {})
       LhTag(text = "可关闭", type = LhTagType.primary, closable = true, onClose = {})

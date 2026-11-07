@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- 共享多语言文案（values/ 默认简体中文，与文档站 root=zh-CN 同口径）。
+       各语言变体在 values-<lang>/strings.xml；宿主可同名 override。 -->
+  <string name="lh_confirm">确认</string>
+  <string name="lh_cancel">取消</string>
+
+  <string name="lh_a11y_left">左侧</string>
+  <string name="lh_a11y_right">右侧</string>
+  <string name="lh_a11y_close">关闭</string>
+  <string name="lh_a11y_clear">清除</string>
+  <string name="lh_a11y_overlay">遮罩</string>
+
+  <string name="lh_state_on">已开启</string>
+  <string name="lh_state_off">已关闭</string>
+  <string name="lh_state_checked">已选中</string>
+  <string name="lh_state_unchecked">未选中</string>
+  <string name="lh_state_indeterminate">半选</string>
+
+</resources>

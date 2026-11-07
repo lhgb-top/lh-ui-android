@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- 原生文档模块的结构性 UI 文案（values/ 默认简体中文，与文档站 root=zh-CN 同口径）。
+       文档页正文内容（标题/散文/表格数据）由 gen-doc-pages.py 从 md 生成，走数据层多语言，
+       不进本文件。 -->
+  <string name="doc_title">lh-ui 文档</string>
+
+  <!-- 首页 -->
+  <string name="doc_home_heading">lh-ui-android 组件文档</string>
+  <string name="doc_home_lede">原生血脉 · Kotlin + Jetpack Compose 组件库，令牌驱动、契约对齐、黄金用例守护。</string>
+  <string name="doc_home_hint">预览均为真 Compose 实时渲染，可交互。</string>
+
+  <!-- 分组标签（DocGroup） -->
+  <string name="doc_group_guide">指南</string>
+  <string name="doc_group_basic">基础组件</string>
+  <string name="doc_group_form">表单组件</string>
+  <string name="doc_group_overlay">反馈与层叠</string>
+
+  <!-- 详情页章节名 -->
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">令牌对照</string>
+  <string name="doc_section_cases">黄金用例对照</string>
+  <string name="doc_section_local">本地验证</string>
+
+  <!-- Props 表头（4 列） -->
+  <string name="doc_prop_name">属性</string>
+  <string name="doc_prop_desc">说明</string>
+  <string name="doc_prop_type">类型</string>
+  <string name="doc_prop_default">默认值</string>
+
+  <!-- 令牌对照表头（2 列） -->
+  <string name="doc_token_name">令牌</string>
+  <string name="doc_token_usage">用途</string>
+
+  <!-- 黄金用例表头（3 列） -->
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">断言</string>
+  <string name="doc_case_test">本地测试</string>
+
+  <!-- 表标题 -->
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">令牌</string>
+  <string name="doc_table_cases">用例</string>
+
+  <!-- 交互反馈 / 无障碍 -->
+  <string name="doc_copied">已复制</string>
+  <string name="doc_a11y_copy">复制代码</string>
+  <string name="doc_a11y_toggle_theme">切换明暗主题</string>
+  <string name="doc_preview_caption">实时预览（真 Compose 渲染，可交互）</string>
+
+  <!-- 语言切换对话框 -->
+  <string name="doc_lang_title">语言</string>
+
+</resources>

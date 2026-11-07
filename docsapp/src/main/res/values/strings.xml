@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- 独立文档 APP 的应用名（values/ 默认简体中文）。与文档站 root=zh-CN 同口径，
+       各语言变体在 values-<lang>/strings.xml。 -->
+  <string name="app_name">lh-ui 文档</string>
+
+</resources>

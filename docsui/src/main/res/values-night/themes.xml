@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- 暗色变体：framework 深色 Material 主题（窗口背景深色） -->
+  <style name="LhDocsUiTheme" parent="android:Theme.Material.NoActionBar" />
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">lh-ui ドキュメント</string>
+
+  <string name="doc_home_heading">lh-ui-android コンポーネントドキュメント</string>
+  <string name="doc_home_lede">ネイティブ血統 · Kotlin + Jetpack Compose コンポーネントライブラリ。トークン駆動・契約整合・ゴールデンケースで守護。</string>
+  <string name="doc_home_hint">プレビューは実際の Compose レンダリング、インタラクティブに操作できます。</string>
+
+  <string name="doc_group_guide">ガイド</string>
+  <string name="doc_group_basic">基本コンポーネント</string>
+  <string name="doc_group_form">フォームコンポーネント</string>
+  <string name="doc_group_overlay">フィードバックとオーバーレイ</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">トークン</string>
+  <string name="doc_section_cases">ゴールデンケース</string>
+  <string name="doc_section_local">ローカル検証</string>
+
+  <string name="doc_prop_name">プロパティ</string>
+  <string name="doc_prop_desc">説明</string>
+  <string name="doc_prop_type">型</string>
+  <string name="doc_prop_default">デフォルト</string>
+
+  <string name="doc_token_name">トークン</string>
+  <string name="doc_token_usage">用途</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">アサーション</string>
+  <string name="doc_case_test">ローカルテスト</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">トークン</string>
+  <string name="doc_table_cases">ケース</string>
+
+  <string name="doc_copied">コピーしました</string>
+  <string name="doc_a11y_copy">コードをコピー</string>
+  <string name="doc_a11y_toggle_theme">テーマを切り替え</string>
+  <string name="doc_preview_caption">リアルタイムプレビュー（実際の Compose レンダリング、インタラクティブ）</string>
+
+  <string name="doc_lang_title">言語</string>
+
+</resources>

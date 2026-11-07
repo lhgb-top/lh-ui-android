@@ -12,10 +12,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.button.LhButton
 import top.lhgb.ui.button.LhButtonType
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -27,7 +27,7 @@ import top.lhgb.ui.theme.LhTheme
 private fun LhDialogDefaultPreview() {
   LhTheme {
     var visible by remember { mutableStateOf(true) }
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(LhTokens.Spacing.base)) {
       LhDialog(
         visible = visible,
         title = "提示",
@@ -45,7 +45,7 @@ private fun LhDialogDefaultPreview() {
 private fun LhDialogDangerPreview() {
   LhTheme {
     var visible by remember { mutableStateOf(true) }
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(LhTokens.Spacing.base)) {
       LhDialog(
         visible = visible,
         title = "删除确认",
@@ -66,7 +66,7 @@ private fun LhDialogDangerPreview() {
 private fun LhDialogFooterSlotPreview() {
   LhTheme {
     var visible by remember { mutableStateOf(true) }
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(LhTokens.Spacing.base)) {
       LhDialog(
         visible = visible,
         title = "自定义底部",

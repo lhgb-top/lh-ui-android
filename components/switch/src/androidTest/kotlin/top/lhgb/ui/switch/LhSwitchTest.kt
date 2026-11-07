@@ -35,7 +35,7 @@ class LhSwitchTest {
         LhSwitch(checked = false, onChange = { emitted = it })
       }
     }
-    composeRule.onNodeWithContentDescription("已关闭").assertIsDisplayed().performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_state_off)).assertIsDisplayed().performClick()
     assertEquals("关闭态点击应发射 checked = true", true, emitted)
   }
 
@@ -48,7 +48,7 @@ class LhSwitchTest {
         LhSwitch(checked = true, onChange = { emitted = it })
       }
     }
-    composeRule.onNodeWithContentDescription("已开启").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_state_on)).performClick()
     assertEquals("开启态点击应发射 checked = false", false, emitted)
   }
 
@@ -61,7 +61,7 @@ class LhSwitchTest {
         LhSwitch(checked = false, disabled = true, onChange = { changes++ })
       }
     }
-    composeRule.onNodeWithContentDescription("已关闭").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_state_off)).performClick()
     assertEquals("禁用态点击不应触发 onChange", 0, changes)
   }
 
@@ -74,7 +74,7 @@ class LhSwitchTest {
         LhSwitch(checked = false, loading = true, onChange = { changes++ })
       }
     }
-    composeRule.onNodeWithContentDescription("已关闭").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_state_off)).performClick()
     assertEquals("加载态点击不应触发 onChange", 0, changes)
   }
 }

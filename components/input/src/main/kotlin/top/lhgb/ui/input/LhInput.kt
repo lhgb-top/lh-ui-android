@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -154,7 +155,7 @@ fun LhInput(
         name = "clear",
         lhSize = LhIconSize.small,
         tone = LhIconTone.regular,
-        contentDescription = "清除",
+        contentDescription = stringResource(top.lhgb.ui.core.R.string.lh_a11y_clear),
         lhOnClick = { onValueChange("") },
         modifier = Modifier.size(appearance.clearIconSize),
       )

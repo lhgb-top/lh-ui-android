@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="lh_confirm">確認</string>
+  <string name="lh_cancel">キャンセル</string>
+
+  <string name="lh_a11y_left">左側</string>
+  <string name="lh_a11y_right">右側</string>
+  <string name="lh_a11y_close">閉じる</string>
+  <string name="lh_a11y_clear">クリア</string>
+  <string name="lh_a11y_overlay">オーバーレイ</string>
+
+  <string name="lh_state_on">オン</string>
+  <string name="lh_state_off">オフ</string>
+  <string name="lh_state_checked">選択済み</string>
+  <string name="lh_state_unchecked">未選択</string>
+  <string name="lh_state_indeterminate">不確定</string>
+
+</resources>

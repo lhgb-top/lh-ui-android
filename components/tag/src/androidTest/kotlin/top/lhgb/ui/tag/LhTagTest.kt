@@ -33,7 +33,7 @@ class LhTagTest {
       }
     }
     composeRule.onNodeWithText("可关闭").assertIsDisplayed()
-    composeRule.onNodeWithContentDescription("关闭").performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_close)).performClick()
     assertEquals(1, closes)
   }
 
@@ -46,7 +46,7 @@ class LhTagTest {
         LhTag(text = "普通标签", closable = false, onClose = { closes++ })
       }
     }
-    composeRule.onNodeWithContentDescription("关闭").assertDoesNotExist()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_close)).assertDoesNotExist()
     composeRule.onNodeWithText("普通标签").performClick()
     assertEquals("标签本体点击不应触发 onClose", 0, closes)
   }

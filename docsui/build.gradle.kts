@@ -41,6 +41,7 @@ dependencies {
   implementation(project(":components:icon"))
   implementation(project(":components:loading"))
   implementation(project(":components:tag"))
+  implementation(project(":components:text"))
   implementation(project(":components:cell"))
   implementation(project(":components:input"))
   implementation(project(":components:textarea"))

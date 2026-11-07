@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
@@ -83,8 +84,8 @@ fun LhPicker(
   modifier: Modifier = Modifier,
   value: Int = 0,
   title: String? = null,
-  confirmText: String = "确认",
-  cancelText: String = "取消",
+  confirmText: String = stringResource(top.lhgb.ui.core.R.string.lh_confirm),
+  cancelText: String = stringResource(top.lhgb.ui.core.R.string.lh_cancel),
   content: @Composable ((List<String>, Int) -> Unit)? = null,
   toolbar: @Composable (() -> Unit)? = null,
   listState: LazyListState = rememberLhPickerListState(value, options),

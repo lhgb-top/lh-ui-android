@@ -11,8 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -25,8 +25,8 @@ private fun LhTextareaBasicPreview() {
   LhTheme {
     var text by remember { mutableStateOf("") }
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       LhTextarea(value = text, onValueChange = { text = it }, placeholder = "请输入多行内容…")
       LhTextarea(value = "已填写的内容", onValueChange = {})
@@ -42,8 +42,8 @@ private fun LhTextareaCountPreview() {
   LhTheme {
     var withMax by remember { mutableStateOf("两行") }
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       LhTextarea(value = withMax, onValueChange = { withMax = it }, showCount = true, maxlength = 10)
       LhTextarea(value = "无上限", onValueChange = {}, showCount = true)
@@ -56,8 +56,8 @@ private fun LhTextareaCountPreview() {
 private fun LhTextareaRowsPreview() {
   LhTheme {
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       LhTextarea(value = "", onValueChange = {}, placeholder = "2 行", rows = 2)
       LhTextarea(value = "", onValueChange = {}, placeholder = "3 行", rows = 3)

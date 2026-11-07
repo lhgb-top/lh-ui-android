@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -54,7 +54,7 @@ private fun LhCellCombinedPreview() {
         clickable = true,
         lhOnClick = {},
       )
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
     }
   }
 }

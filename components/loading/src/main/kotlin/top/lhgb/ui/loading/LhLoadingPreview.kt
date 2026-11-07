@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -25,8 +25,8 @@ import top.lhgb.ui.theme.LhTheme
 private fun LhLoadingSizesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(24.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.xl),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       LhLoading(lhSize = LhLoadingSize.small)
@@ -41,8 +41,8 @@ private fun LhLoadingSizesPreview() {
 private fun LhLoadingTonesPreview() {
   LhTheme {
     Column(
-      modifier = Modifier.padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(12.dp),
+      modifier = Modifier.padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.md),
     ) {
       LhLoading(tone = LhLoadingTone.primary)
       LhLoading(tone = LhLoadingTone.success)
@@ -58,12 +58,11 @@ private fun LhLoadingTonesPreview() {
 private fun LhLoadingInlinePreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(8.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       LhLoading(lhSize = LhLoadingSize.small)
-      Spacer(Modifier.height(0.dp))
       Text("加载中…")
     }
   }

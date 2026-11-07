@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">lh-ui 문서</string>
+
+  <string name="doc_home_heading">lh-ui-android 컴포넌트 문서</string>
+  <string name="doc_home_lede">네이티브 혈통 · Kotlin + Jetpack Compose 컴포넌트 라이브러리, 토큰 기반, 계약 정렬, 골든 케이스 수호.</string>
+  <string name="doc_home_hint">미리보기는 실제 Compose 렌더링이며 상호 작동할 수 있습니다.</string>
+
+  <string name="doc_group_guide">가이드</string>
+  <string name="doc_group_basic">기본 컴포넌트</string>
+  <string name="doc_group_form">폼 컴포넌트</string>
+  <string name="doc_group_overlay">피드백과 오버레이</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">토큰</string>
+  <string name="doc_section_cases">골든 케이스</string>
+  <string name="doc_section_local">로컬 검증</string>
+
+  <string name="doc_prop_name">속성</string>
+  <string name="doc_prop_desc">설명</string>
+  <string name="doc_prop_type">유형</string>
+  <string name="doc_prop_default">기본값</string>
+
+  <string name="doc_token_name">토큰</string>
+  <string name="doc_token_usage">용도</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">어서션</string>
+  <string name="doc_case_test">로컬 테스트</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">토큰</string>
+  <string name="doc_table_cases">케이스</string>
+
+  <string name="doc_copied">복사됨</string>
+  <string name="doc_a11y_copy">코드 복사</string>
+  <string name="doc_a11y_toggle_theme">밝은/어두운 테마 전환</string>
+  <string name="doc_preview_caption">실시간 미리보기(실제 Compose 렌더링, 상호 작동)</string>
+
+  <string name="doc_lang_title">언어</string>
+
+</resources>

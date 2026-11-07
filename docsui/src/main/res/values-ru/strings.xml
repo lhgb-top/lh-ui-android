@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">Документация lh-ui</string>
+
+  <string name="doc_home_heading">Документация компонентов lh-ui-android</string>
+  <string name="doc_home_lede">Нативная ветвь · Библиотека компонентов на Kotlin + Jetpack Compose, на токенах, по контрактам, под защитой эталонных тест-кейсов.</string>
+  <string name="doc_home_hint">Превью — реальный рендер Compose, интерактивный.</string>
+
+  <string name="doc_group_guide">Руководства</string>
+  <string name="doc_group_basic">Базовые компоненты</string>
+  <string name="doc_group_form">Компоненты форм</string>
+  <string name="doc_group_overlay">Обратная связь и наложения</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">Токены</string>
+  <string name="doc_section_cases">Эталонные кейсы</string>
+  <string name="doc_section_local">Локальная проверка</string>
+
+  <string name="doc_prop_name">Свойство</string>
+  <string name="doc_prop_desc">Описание</string>
+  <string name="doc_prop_type">Тип</string>
+  <string name="doc_prop_default">По умолчанию</string>
+
+  <string name="doc_token_name">Токен</string>
+  <string name="doc_token_usage">Назначение</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">Утверждение</string>
+  <string name="doc_case_test">Локальный тест</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">Токены</string>
+  <string name="doc_table_cases">Кейсы</string>
+
+  <string name="doc_copied">Скопировано</string>
+  <string name="doc_a11y_copy">Копировать код</string>
+  <string name="doc_a11y_toggle_theme">Переключить светлую/тёмную тему</string>
+  <string name="doc_preview_caption">Живой превью (реальный рендер Compose, интерактивный)</string>
+
+  <string name="doc_lang_title">Язык</string>
+
+</resources>

@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import top.lhgb.ui.docs.model.DocEntry
 import top.lhgb.ui.docs.model.DocPreviewScope
 import top.lhgb.ui.docs.widgets.DocCodeBlock
@@ -38,10 +39,12 @@ fun DocPage(
       .padding(bottom = LhTokens.Spacing.xxl),
     verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.sm),
   ) {
+    val copiedText = stringResource(top.lhgb.ui.docsui.R.string.doc_copied)
     DocHeading(entry.title, level = 1)
     DocProse(entry.lede)
+    // contract 自带各语言的「契约源/Spec source」标签（md 原文），直接渲染
     if (entry.contract != null) {
-      DocProse("契约源：${entry.contract}", secondary = true)
+      DocProse(entry.contract, secondary = true)
     }
     DocDivider()
 
@@ -56,18 +59,23 @@ fun DocPage(
         }
       }
       if (section.code.isNotEmpty()) {
-        DocCodeBlock(section.code)
+        DocCodeBlock(section.code, onCopied = { showToast(copiedText) })
       }
     }
 
     // API
     if (entry.props.isNotEmpty() || entry.enums.isNotEmpty()) {
-      DocHeading("API", level = 2)
+      DocHeading(stringResource(top.lhgb.ui.docsui.R.string.doc_section_api), level = 2)
       if (entry.props.isNotEmpty()) {
         DocTable(
           top.lhgb.ui.docs.model.DocTable(
-            title = "Props",
-            headers = listOf("属性", "说明", "类型", "默认值"),
+            title = stringResource(top.lhgb.ui.docsui.R.string.doc_table_props),
+            headers = listOf(
+              stringResource(top.lhgb.ui.docsui.R.string.doc_prop_name),
+              stringResource(top.lhgb.ui.docsui.R.string.doc_prop_desc),
+              stringResource(top.lhgb.ui.docsui.R.string.doc_prop_type),
+              stringResource(top.lhgb.ui.docsui.R.string.doc_prop_default),
+            ),
             rows = entry.props,
           ),
         )
@@ -77,11 +85,14 @@ fun DocPage(
 
     // 令牌对照
     if (entry.tokens.isNotEmpty()) {
-      DocHeading("令牌对照", level = 2)
+      DocHeading(stringResource(top.lhgb.ui.docsui.R.string.doc_section_tokens), level = 2)
       DocTable(
         top.lhgb.ui.docs.model.DocTable(
-          title = "令牌",
-          headers = listOf("令牌", "用途"),
+          title = stringResource(top.lhgb.ui.docsui.R.string.doc_table_tokens),
+          headers = listOf(
+            stringResource(top.lhgb.ui.docsui.R.string.doc_token_name),
+            stringResource(top.lhgb.ui.docsui.R.string.doc_token_usage),
+          ),
           rows = entry.tokens,
         ),
       )
@@ -89,11 +100,15 @@ fun DocPage(
 
     // 黄金用例对照
     if (entry.cases.isNotEmpty()) {
-      DocHeading("黄金用例对照", level = 2)
+      DocHeading(stringResource(top.lhgb.ui.docsui.R.string.doc_section_cases), level = 2)
       DocTable(
         top.lhgb.ui.docs.model.DocTable(
-          title = "用例",
-          headers = listOf("case id", "断言", "本地测试"),
+          title = stringResource(top.lhgb.ui.docsui.R.string.doc_table_cases),
+          headers = listOf(
+            stringResource(top.lhgb.ui.docsui.R.string.doc_case_id),
+            stringResource(top.lhgb.ui.docsui.R.string.doc_case_assert),
+            stringResource(top.lhgb.ui.docsui.R.string.doc_case_test),
+          ),
           rows = entry.cases,
         ),
       )
@@ -101,8 +116,8 @@ fun DocPage(
 
     // 测试命令
     if (entry.commands.isNotEmpty()) {
-      DocHeading("本地验证", level = 2)
-      DocCodeBlock(entry.commands)
+      DocHeading(stringResource(top.lhgb.ui.docsui.R.string.doc_section_local), level = 2)
+      DocCodeBlock(entry.commands, onCopied = { showToast(copiedText) })
     }
   }
 }

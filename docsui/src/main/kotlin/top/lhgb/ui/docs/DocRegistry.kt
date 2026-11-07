@@ -1,65 +1,25 @@
 package top.lhgb.ui.docs
 
 import top.lhgb.ui.docs.model.DocEntry
+import top.lhgb.ui.locale.LhAppLocale
 import top.lhgb.ui.docs.model.DocGroup
-import top.lhgb.ui.docs.pages.buttonDoc
-import top.lhgb.ui.docs.pages.cellDoc
-import top.lhgb.ui.docs.pages.checkboxDoc
-import top.lhgb.ui.docs.pages.dialogDoc
-import top.lhgb.ui.docs.pages.guideInstallationDoc
-import top.lhgb.ui.docs.pages.guideIntroductionDoc
-import top.lhgb.ui.docs.pages.guideLocalLinkingDoc
-import top.lhgb.ui.docs.pages.guideQuickstartDoc
-import top.lhgb.ui.docs.pages.guideThemingDoc
-import top.lhgb.ui.docs.pages.iconDoc
-import top.lhgb.ui.docs.pages.inputDoc
-import top.lhgb.ui.docs.pages.loadingDoc
-import top.lhgb.ui.docs.pages.navbarDoc
-import top.lhgb.ui.docs.pages.pickerDoc
-import top.lhgb.ui.docs.pages.radioDoc
-import top.lhgb.ui.docs.pages.switchDoc
-import top.lhgb.ui.docs.pages.tagDoc
-import top.lhgb.ui.docs.pages.textareaDoc
-import top.lhgb.ui.docs.pages.toastDoc
 
 /**
- * 文档页面注册表：数据驱动，新增组件只需加一条。
+ * 文档页面注册表：数据驱动，新增组件只在生成链路加一条（docs md →
+ * `scripts/gen-doc-pages.py` → pages/&lt;lang&gt;/ 页面数据）。
  *
- * 顺序严格对齐网页版 sidebar（docs/.vitepress/config.ts）：
- * 指南 → 基础组件（button → icon → tag → loading → cell）
- * → 表单组件（input → textarea → checkbox → radio → switch）
- * → 反馈与层叠（dialog → toast → picker → navbar）。
+ * 页面数据按语言解析：[all]/[byId] 依据 [LhAppLocale] 当前语言选取对应语言的
+ * DocEntry 列表（回退中文）。分组为结构性 UI，跨语言共享 [groups]。
  */
 object DocRegistry {
 
-  val all: List<DocEntry> = listOf(
-    // 指南
-    guideIntroductionDoc,
-    guideInstallationDoc,
-    guideQuickstartDoc,
-    guideThemingDoc,
-    guideLocalLinkingDoc,
-    // 基础组件
-    buttonDoc,
-    iconDoc,
-    tagDoc,
-    loadingDoc,
-    cellDoc,
-    // 表单组件
-    inputDoc,
-    textareaDoc,
-    checkboxDoc,
-    radioDoc,
-    switchDoc,
-    // 反馈与层叠
-    dialogDoc,
-    toastDoc,
-    pickerDoc,
-    navbarDoc,
-  )
+  /** 当前语言的全部页面（顺序：指南 → 基础 → 表单 → 反馈与层叠，对齐网页版 sidebar）。 */
+  fun all(context: android.content.Context): List<DocEntry> =
+    top.lhgb.ui.docs.pages.docEntriesFor(LhAppLocale.code(context))
 
-  /** 按 id 查页；找不到返回 null（调用方负责兜底）。 */
-  fun byId(id: String): DocEntry? = all.firstOrNull { it.id == id }
+  /** 按 id 查当前语言的页；找不到返回 null（调用方负责兜底）。 */
+  fun byId(context: android.content.Context, id: String): DocEntry? =
+    all(context).firstOrNull { it.id == id }
 
   /** 全部分组（顺序即首页渲染顺序）。 */
   val groups: List<DocGroup> = DocGroup.entries

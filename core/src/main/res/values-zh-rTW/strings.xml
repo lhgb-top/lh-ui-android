@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="lh_confirm">確認</string>
+  <string name="lh_cancel">取消</string>
+
+  <string name="lh_a11y_left">左側</string>
+  <string name="lh_a11y_right">右側</string>
+  <string name="lh_a11y_close">關閉</string>
+  <string name="lh_a11y_clear">清除</string>
+  <string name="lh_a11y_overlay">遮罩</string>
+
+  <string name="lh_state_on">已開啟</string>
+  <string name="lh_state_off">已關閉</string>
+  <string name="lh_state_checked">已選取</string>
+  <string name="lh_state_unchecked">未選取</string>
+  <string name="lh_state_indeterminate">半選</string>
+
+</resources>

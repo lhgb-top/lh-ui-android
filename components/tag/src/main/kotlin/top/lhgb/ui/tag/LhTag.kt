@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
@@ -22,6 +23,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -93,15 +95,16 @@ fun LhTag(
     if (closable) {
       // spec：尾部绘制关闭符（两条对角线），点击其区域触发 onClose
       val interactionSource = remember { MutableInteractionSource() }
+      val closeDesc = stringResource(top.lhgb.ui.core.R.string.lh_a11y_close)
       Box(
         modifier = Modifier
           .size(appearance.closeSize + appearance.closeGap)
-          .clip(RoundedCornerShape(50))
+          .clip(CircleShape)
           .clickable(
             interactionSource = interactionSource,
             indication = null,
           ) { onClose?.invoke() }
-          .semantics { contentDescription = "关闭" },
+          .semantics { contentDescription = closeDesc },
         contentAlignment = Alignment.Center,
       ) {
         Canvas(modifier = Modifier.size(appearance.closeSize)) {

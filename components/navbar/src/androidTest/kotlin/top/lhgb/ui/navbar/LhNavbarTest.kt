@@ -53,7 +53,7 @@ class LhNavbarTest {
         )
       }
     }
-    composeRule.onNodeWithContentDescription("左侧").assertIsDisplayed().performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_left)).assertIsDisplayed().performClick()
     assertEquals("点击左侧应触发 onLeftClick", 1, leftClicks)
   }
 
@@ -71,7 +71,7 @@ class LhNavbarTest {
         )
       }
     }
-    composeRule.onNodeWithContentDescription("右侧").assertIsDisplayed().performClick()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_right)).assertIsDisplayed().performClick()
     assertEquals("点击右侧应触发 onRightClick", 1, rightClicks)
   }
 
@@ -85,7 +85,7 @@ class LhNavbarTest {
       }
     }
     // 无左侧内容时「左侧」可点击节点不存在
-    composeRule.onNodeWithContentDescription("左侧").assertDoesNotExist()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_left)).assertDoesNotExist()
     assertEquals("无左侧内容时不应触发 onLeftClick", 0, leftClicks)
   }
 
@@ -103,6 +103,6 @@ class LhNavbarTest {
       }
     }
     composeRule.onNodeWithText("返回").assertIsDisplayed()
-    composeRule.onNodeWithContentDescription("左侧").assertIsDisplayed()
+    composeRule.onNodeWithContentDescription(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext.getString(top.lhgb.ui.core.R.string.lh_a11y_left)).assertIsDisplayed()
   }
 }

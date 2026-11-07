@@ -1,15 +1,20 @@
 package top.lhgb.ui.docs.model
 
+import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
+import top.lhgb.ui.docsui.R
 
 /**
  * 文档分组：对齐网页版 sidebar 的三分组 + 指南分组。
+ *
+ * 分组标签是结构性 UI 文案，走 [R.string] 多语言资源（[labelRes]），
+ * 渲染处用 `stringResource(group.labelRes)` 取展示文本。
  */
-enum class DocGroup(val label: String) {
-  GUIDE("指南"),
-  BASIC("基础组件"),
-  FORM("表单组件"),
-  OVERLAY("反馈与层叠"),
+enum class DocGroup(@StringRes val labelRes: Int) {
+  GUIDE(R.string.doc_group_guide),
+  BASIC(R.string.doc_group_basic),
+  FORM(R.string.doc_group_form),
+  OVERLAY(R.string.doc_group_overlay),
 }
 
 /** 通用表格行：cells 数量必须与表头数量一致。 */

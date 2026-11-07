@@ -9,7 +9,11 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Search
@@ -42,6 +46,10 @@ object LhIcons {
     "arrow-left" to Icons.AutoMirrored.Filled.ArrowBack,
     "arrow-right" to Icons.AutoMirrored.Filled.ArrowForward,
     "chevron-right" to Icons.AutoMirrored.Filled.KeyboardArrowRight,
+    "content-copy" to Icons.Filled.ContentCopy,
+    "globe" to Icons.Filled.Language,
+    "moon" to Icons.Filled.DarkMode,
+    "sun" to Icons.Filled.LightMode,
   )
 
   /** 解析图标名；null 或未登记名返回 null（调用方决定是否绘制）。 */

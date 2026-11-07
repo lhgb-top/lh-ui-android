@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import top.lhgb.ui.theme.LhColors
 import top.lhgb.ui.theme.LhThemeColors
@@ -55,6 +56,11 @@ fun LhCheckbox(
     LhCheckboxDefaults.resolve(lhSize, checked, indeterminate, disabled, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
+  val stateDesc = stringResource(
+    if (indeterminate) top.lhgb.ui.core.R.string.lh_state_indeterminate
+    else if (checked) top.lhgb.ui.core.R.string.lh_state_checked
+    else top.lhgb.ui.core.R.string.lh_state_unchecked,
+  )
 
   Row(
     modifier = modifier
@@ -68,7 +74,7 @@ fun LhCheckbox(
       }
       .semantics {
         role = Role.Checkbox
-        contentDescription = if (indeterminate) "半选" else if (checked) "已选中" else "未选中"
+        contentDescription = stateDesc
       },
     horizontalArrangement = Arrangement.spacedBy(appearance.gap),
     verticalAlignment = Alignment.CenterVertically,

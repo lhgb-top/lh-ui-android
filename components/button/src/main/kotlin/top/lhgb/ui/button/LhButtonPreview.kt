@@ -7,8 +7,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -27,13 +27,13 @@ private fun LhButtonAllTypesPreview() {
   LhTheme {
     Column {
       LhButton(type = LhButtonType.primary, lhOnClick = {}) { Text("主要按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.success, lhOnClick = {}) { Text("成功按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.warning, lhOnClick = {}) { Text("警告按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.danger, lhOnClick = {}) { Text("危险按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.info, lhOnClick = {}) { Text("信息按钮") }
     }
   }
@@ -45,9 +45,9 @@ private fun LhButtonSizesPreview() {
   LhTheme {
     Column {
       LhButton(lhSize = LhButtonSize.small, lhOnClick = {}) { Text("小型按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(lhSize = LhButtonSize.medium, lhOnClick = {}) { Text("中型按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(lhSize = LhButtonSize.large, lhOnClick = {}) { Text("大型按钮") }
     }
   }
@@ -59,9 +59,9 @@ private fun LhButtonStatesPreview() {
   LhTheme {
     Column {
       LhButton(type = LhButtonType.primary, disabled = true, lhOnClick = {}) { Text("禁用按钮") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.primary, loading = true, lhOnClick = {}) { Text("加载中") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.primary, disabled = true, loading = true, lhOnClick = {}) { Text("禁用优先") }
     }
   }
@@ -73,7 +73,7 @@ private fun LhButtonIconAndPatternPreview() {
   LhTheme {
     Column {
       LhButton(type = LhButtonType.primary, icon = "search", lhOnClick = {}) { Text("搜索") }
-      Spacer(Modifier.height(8.dp))
+      Spacer(Modifier.height(LhTokens.Spacing.sm))
       LhButton(type = LhButtonType.primary, bgPattern = true, lhOnClick = {}) { Text("花纹底") }
     }
   }

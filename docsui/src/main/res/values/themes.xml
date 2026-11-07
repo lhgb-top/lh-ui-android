@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- 纯 Compose 库（无 appcompat）：values / values-night 一对 framework 主题
+       实现 DayNight——合并进宿主后，文档 Activity 的窗口背景随系统暗色切换，
+       启动/未绘制区域不闪白。内容 UI 全部由 Compose 绘制。 -->
+  <style name="LhDocsUiTheme" parent="android:Theme.Material.Light.NoActionBar" />
+
+</resources>

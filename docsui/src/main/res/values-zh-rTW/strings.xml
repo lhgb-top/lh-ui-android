@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">lh-ui 文件</string>
+
+  <string name="doc_home_heading">lh-ui-android 元件文件</string>
+  <string name="doc_home_lede">原生血脈 · Kotlin + Jetpack Compose 元件庫，令牌驅動、契約對齊、黃金用例守護。</string>
+  <string name="doc_home_hint">預覽均為真 Compose 即時渲染，可互動。</string>
+
+  <string name="doc_group_guide">指南</string>
+  <string name="doc_group_basic">基礎元件</string>
+  <string name="doc_group_form">表單元件</string>
+  <string name="doc_group_overlay">回饋與層疊</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">權杖對照</string>
+  <string name="doc_section_cases">黃金用例對照</string>
+  <string name="doc_section_local">本地驗證</string>
+
+  <string name="doc_prop_name">屬性</string>
+  <string name="doc_prop_desc">說明</string>
+  <string name="doc_prop_type">類型</string>
+  <string name="doc_prop_default">預設值</string>
+
+  <string name="doc_token_name">權杖</string>
+  <string name="doc_token_usage">用途</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">斷言</string>
+  <string name="doc_case_test">本地測試</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">權杖</string>
+  <string name="doc_table_cases">用例</string>
+
+  <string name="doc_copied">已複製</string>
+  <string name="doc_a11y_copy">複製程式碼</string>
+  <string name="doc_a11y_toggle_theme">切換明暗主題</string>
+  <string name="doc_preview_caption">即時預覽（真 Compose 渲染，可互動）</string>
+
+  <string name="doc_lang_title">語言</string>
+
+</resources>

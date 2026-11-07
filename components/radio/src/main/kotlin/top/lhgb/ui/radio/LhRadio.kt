@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import top.lhgb.ui.theme.LhColors
 import top.lhgb.ui.theme.LhThemeColors
@@ -55,6 +56,10 @@ fun LhRadio(
     LhRadioDefaults.resolve(lhSize, checked, disabled, colors)
   }
   val interactionSource = remember { MutableInteractionSource() }
+  val stateDesc = stringResource(
+    if (checked) top.lhgb.ui.core.R.string.lh_state_checked
+    else top.lhgb.ui.core.R.string.lh_state_unchecked,
+  )
 
   Row(
     modifier = modifier
@@ -68,7 +73,7 @@ fun LhRadio(
       }
       .semantics {
         role = Role.RadioButton
-        contentDescription = if (checked) "已选中" else "未选中"
+        contentDescription = stateDesc
       },
     horizontalArrangement = Arrangement.spacedBy(appearance.gap),
     verticalAlignment = Alignment.CenterVertically,

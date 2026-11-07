@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="lh_confirm">확인</string>
+  <string name="lh_cancel">취소</string>
+
+  <string name="lh_a11y_left">왼쪽</string>
+  <string name="lh_a11y_right">오른쪽</string>
+  <string name="lh_a11y_close">닫기</string>
+  <string name="lh_a11y_clear">지우기</string>
+  <string name="lh_a11y_overlay">오버레이</string>
+
+  <string name="lh_state_on">켜짐</string>
+  <string name="lh_state_off">꺼짐</string>
+  <string name="lh_state_checked">선택됨</string>
+  <string name="lh_state_unchecked">선택 안 됨</string>
+  <string name="lh_state_indeterminate">부분 선택</string>
+
+</resources>

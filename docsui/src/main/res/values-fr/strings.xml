@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="doc_title">Docs lh-ui</string>
+
+  <string name="doc_home_heading">Documentation des composants de lh-ui-android</string>
+  <string name="doc_home_lede">Lignée native · Bibliothèque de composants en Kotlin + Jetpack Compose, pilotée par les tokens, alignée sur les spécifications et gardée par les cas de test.</string>
+  <string name="doc_home_hint">Les aperçus sont des rendus Compose réels et interactifs.</string>
+
+  <string name="doc_group_guide">Guides</string>
+  <string name="doc_group_basic">Composants de base</string>
+  <string name="doc_group_form">Composants de formulaire</string>
+  <string name="doc_group_overlay">Retours visuels et superpositions</string>
+
+  <string name="doc_section_api">API</string>
+  <string name="doc_section_tokens">Tokens</string>
+  <string name="doc_section_cases">Cas de test</string>
+  <string name="doc_section_local">Vérification locale</string>
+
+  <string name="doc_prop_name">Propriété</string>
+  <string name="doc_prop_desc">Description</string>
+  <string name="doc_prop_type">Type</string>
+  <string name="doc_prop_default">Valeur par défaut</string>
+
+  <string name="doc_token_name">Token</string>
+  <string name="doc_token_usage">Usage</string>
+
+  <string name="doc_case_id">case id</string>
+  <string name="doc_case_assert">Assertion</string>
+  <string name="doc_case_test">Test local</string>
+
+  <string name="doc_table_props">Props</string>
+  <string name="doc_table_tokens">Tokens</string>
+  <string name="doc_table_cases">Cas</string>
+
+  <string name="doc_copied">Copié</string>
+  <string name="doc_a11y_copy">Copier le code</string>
+  <string name="doc_a11y_toggle_theme">Basculer le thème clair/sombre</string>
+  <string name="doc_preview_caption">Aperçu en direct (rendu Compose réel, interactif)</string>
+
+  <string name="doc_lang_title">Langue</string>
+
+</resources>

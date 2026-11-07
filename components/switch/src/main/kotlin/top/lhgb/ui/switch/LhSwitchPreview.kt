@@ -13,8 +13,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import top.lhgb.ui.theme.LhTheme
+import top.lhgb.ui.tokens.LhTokens
 
 /**
  * 组件预览（等价于文档示例的第一现场）。`@Preview` 在 Android Studio 中实时渲染，
@@ -27,8 +27,8 @@ private fun LhSwitchStatesPreview() {
   LhTheme {
     var on by remember { mutableStateOf(false) }
     Column(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      verticalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      verticalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
       horizontalAlignment = Alignment.Start,
     ) {
       LhSwitch(checked = false, onChange = {})
@@ -47,8 +47,8 @@ private fun LhSwitchStatesPreview() {
 private fun LhSwitchSizesPreview() {
   LhTheme {
     Row(
-      modifier = Modifier.fillMaxWidth().padding(16.dp),
-      horizontalArrangement = Arrangement.spacedBy(16.dp),
+      modifier = Modifier.fillMaxWidth().padding(LhTokens.Spacing.base),
+      horizontalArrangement = Arrangement.spacedBy(LhTokens.Spacing.base),
       verticalAlignment = Alignment.CenterVertically,
     ) {
       LhSwitch(checked = true, onChange = {}, lhSize = LhSwitchSize.small)

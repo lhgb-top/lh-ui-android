@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- 纯 Compose 工程（无 appcompat）：用 values / values-night 的一对 framework 主题
+       实现 DayNight——系统暗色下窗口背景为深色，启动/未绘制区域不闪白。
+       内容 UI 全部由 Compose 绘制，主题只提供窗口底色与 NoActionBar。 -->
+  <style name="LhDocsAppTheme" parent="android:Theme.Material.Light.NoActionBar" />
+
+</resources>

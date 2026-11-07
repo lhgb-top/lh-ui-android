@@ -5,17 +5,21 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
@@ -99,7 +103,7 @@ fun LhNavbar(
         icon = leftIcon,
         appearance = appearance,
         onClick = onLeftClick,
-        contentDescription = "左侧",
+        contentDescription = stringResource(top.lhgb.ui.core.R.string.lh_a11y_left),
         horizontalAlignment = Alignment.Start,
         modifier = Modifier.weight(1f),
       )
@@ -127,7 +131,7 @@ fun LhNavbar(
         icon = rightIcon,
         appearance = appearance,
         onClick = onRightClick,
-        contentDescription = "右侧",
+        contentDescription = stringResource(top.lhgb.ui.core.R.string.lh_a11y_right),
         horizontalAlignment = Alignment.End,
         modifier = Modifier.weight(1f),
       )
@@ -136,6 +140,7 @@ fun LhNavbar(
 }
 
 /** 左/右一侧：文字 + 图标（二者非空时都显示），有内容时可点击 */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun NavbarSide(
   content: @Composable (() -> Unit)?,
@@ -156,14 +161,17 @@ private fun NavbarSide(
       .then(
         if (hasContent) {
           val interactionSource = remember { MutableInteractionSource() }
-          Modifier.clickable(
-            interactionSource = interactionSource,
-            indication = null,
-            onClick = onClick,
-          ).semantics {
-            role = Role.Button
-            this.contentDescription = contentDescription
-          }
+          Modifier
+            // 触控目标至少 48dp（小屏返回箭头不再难按），水波纹用主色与其他可点击组件一致
+            .minimumInteractiveComponentSize()
+            .clickable(
+              interactionSource = interactionSource,
+              indication = ripple(color = LhThemeColors.hoverBg),
+              onClick = onClick,
+            ).semantics {
+              role = Role.Button
+              this.contentDescription = contentDescription
+            }
         } else {
           Modifier
         },

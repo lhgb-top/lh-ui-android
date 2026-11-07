@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -65,8 +66,8 @@ fun LhDialog(
   title: String? = null,
   content: String? = null,
   type: LhDialogType = LhDialogType.default,
-  confirmText: String = "确认",
-  cancelText: String = "取消",
+  confirmText: String = stringResource(top.lhgb.ui.core.R.string.lh_confirm),
+  cancelText: String = stringResource(top.lhgb.ui.core.R.string.lh_cancel),
   closable: Boolean = false,
   titleContent: @Composable (() -> Unit)? = null,
   contentContent: @Composable (() -> Unit)? = null,
@@ -79,6 +80,7 @@ fun LhDialog(
   val appearance = LhDialogDefaults.resolve(type, colors)
   val cardShape = RoundedCornerShape(appearance.borderRadius)
   val elevationDp = with(LocalDensity.current) { LhTokens.Shadow.base.blurRadius.toDp() }
+  val overlayDesc = stringResource(top.lhgb.ui.core.R.string.lh_a11y_overlay)
 
   Dialog(
     onDismissRequest = { if (closable) onClose() },
@@ -89,7 +91,7 @@ fun LhDialog(
         .fillMaxSize()
         .background(color = appearance.overlayColor)
         .clickable { if (closable) onClose() }
-        .semantics { contentDescription = "遮罩" },
+        .semantics { contentDescription = overlayDesc },
       contentAlignment = Alignment.Center,
     ) {
       Column(
