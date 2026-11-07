@@ -51,6 +51,35 @@ LhTheme(isDark = isDark) {
 }
 ```
 
+## 安装（消费侧）
+
+单坐标 `top.lhgb.ui:android:<版本>`（D22；版本与仓内 `package.json` 一致，
+由 `LHUI_VERSION` 单向同步）：
+
+```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()                                                    // 主通道
+        maven("https://maven.pkg.github.com/lhgb-top/lh-ui-android") {    // 过渡/内网镜像
+            credentials(PasswordCredentials::class)
+        }
+        mavenLocal()                                                      // 本仓发布预验后可用
+    }
+}
+```
+
+```kotlin
+// app/build.gradle.kts
+dependencies {
+    implementation("top.lhgb.ui:android:0.0.1")
+}
+```
+
+一个坐标即含主题接入层 + 令牌 + 全部 15 个组件；不需要按组件分别引依赖。
+本地预验本仓发布产物：`./gradlew :lhui:publishToMavenLocal` 后在消费工程加
+`mavenLocal()` 即可（见 AGENTS.md「发包」章节）。
+
 ## 文档
 
 ```bash

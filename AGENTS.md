@@ -108,8 +108,36 @@ core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkToke
 | 原生文档库编译 | `./gradlew :docsui:compileDebugKotlin` | |
 | 文档 APP 打包/装机 | `./gradlew :docsapp:installDebug` | 独立分发的「lh-ui 文档」APP |
 | 类型 | `./gradlew :components:button:compileDebugKotlin` | Kotlin 编译即类型检查 |
+| 发布本地预验 | `./gradlew :lhui:publishToMavenLocal` | 无凭据免签名，产物落 ~/.m2 检查 POM / AAR |
+| 发布 Maven Central | `./gradlew :lhui:publishToMavenCentralRelease` | 需 ~/.gradle/gradle.properties 的 central.* + signing.* 凭据 |
+| 发布 GitHub Packages | `./gradlew :lhui:publishToGitHubPackages` | 需 gpr.* 凭据（GitHub PAT packages:write） |
 
-## 八、Read before touching sensitive areas
+## 八、发包（Maven 单坐标，D22）
+
+发布链路于 2026-11-04 补齐：约定插件 `buildSrc/src/main/kotlin/LhuiPublishingPlugin.kts`
+（id `lhui.publishing`）+ 聚合发布模块 `:lhui`。
+
+- **坐标**：`top.lhgb.ui:android:<LHUI_VERSION>`（单坐标；`LHUI_VERSION` 由
+  `scripts/sync-version.mjs` 从 package.json 单向同步，禁止手改）。`:lhui` 模块的
+  main 源集汇聚 `core` + 全部 `components/*` 的 `src/main/kotlin`（组件只有 kotlin 源、
+  零 res、零 R 引用，聚合后单一 namespace 无冲突），因此 **POM 只列外部依赖
+  （Compose BOM / androidx），不含任何内部 project 坐标**——与
+  [docs/发包流程.md](../docs/发包流程.md) §5.3「components 并入主库、POM 依赖改写到
+  主坐标」等价且更彻底。开发态不变：docsapp / docsui 继续依赖原模块。
+- **凭据**（用户级 `~/.gradle/gradle.properties` 或 CI 的 `ORG_GRADLE_PROJECT_*`
+  环境变量，**禁止入库**）：发布 Central 用 `centralUsername` / `centralPassword`
+  （Central Portal 令牌）+ 签名三键 `signingKeyId` / `signingPassword` /
+  `signingSecretKeyRingFile`；GitHub Packages 用 `gprUsername` / `gprPassword`。
+  签名三键不齐时本地 `publishToMavenLocal` 免签通过，方便零门槛预验。
+- **发版纪律**：Central 已发布版本不可回滚（只能发新版本），发版前必须先跑
+  `publishToMavenLocal`，检查 `~/.m2/repository/top/lhgb/ui/android/<版本>/` 的
+  POM（元数据齐全、无内部坐标）与 AAR（classes.jar 含全部组件 + theme + tokens）。
+- POM 元数据口径与 windows（NuGet）/ harmony（ohpm）对齐：Apache-2.0、developers
+  lhgb `<i@lhgb.top>`、scm 指向 github 仓、inceptionYear 2026。
+- **任务别名** `publishToMavenCentralRelease` / `publishToGitHubPackages` 由插件
+  注册（docs/发包流程.md §5.3 与家族命令速查已固化这两个名字）。
+
+## 九、Read before touching sensitive areas
 
 - 改 `LhTheme.kt`：先读 core 的 `dist/android/top/lhgb/ui/tokens/LhDarkTokens.kt`，确认暗色覆盖范围
   （只 Color，不含尺寸），否则主题层取尺寸会拿到 null。
@@ -123,6 +151,25 @@ core 的 codegen 产物是 `top.lhgb.ui.tokens.LhTokens`（明）与 `LhDarkToke
   同步原生文档页，并在 `DocRegistry` + `docsui/.../previews/` 补该组件的注册条与可交互预览。
 - 改 `docsui` 的文档内容：内容是 `docs/*.md` 的生成物（见二节注），**禁止手改 `pages/*Doc.kt`**，
   只能手写 `previews/` 里的可交互预览 composable。
+
+## 十、多语言（i18n）
+
+- **语言集**：zh（根，简体）、en、zh-TW、ja、ko、es、fr、ru、ar，与文档站
+  `docs/.vitepress/config.ts` 的 locales 一一对应。`values/` 默认中文。
+- **文档内容**（标题/散文/表格数据）：`scripts/gen-doc-pages.py` 从九语言 md
+  **逐节对齐**生成 `pages/<lang>/`（zh 保持根路径），聚合入口是生成的
+  `docEntriesFor(code)`；md 与中文版结构必须对齐，脚本带 props/tokens 行数校验。
+- **结构性 UI 文案**：core 的 `values/strings.xml`（`lh_*` 前缀，组件层共用：
+  确认/取消/无障碍描述等）+ docsui 的 `values/strings.xml`（`doc_*` 前缀）。
+  组件用 `stringResource(top.lhgb.ui.core.R.string.lh_*)`；新增 core 字符串时
+  必须同步登记 `lhui/src/main/kotlin/top/lhgb/ui/core/R.kt` 聚合垫片。
+- **解析与切换**：`LhAppLocale`（core）按 Configuration 解析语言代码（回退 zh），
+  应用内切换 = 持久化 + Activity `attachBaseContext` 覆盖 + `finish()`+`startActivity()`
+  relaunch（`recreate()` 不刷新 base context，无效）。宿主声明
+  `top.lhgb.ui.docs.LhDocsApplication`（或 Activity 各自 override attachBaseContext），
+  docsapp 另配 `localeConfig` 接系统 per-app 语言（API 33+）。
+- **嵌宿主破坏性变更（2026-11）**：`DocGroup(label: String)` → `DocGroup(labelRes: Int)`，
+  老代码 `group.label` 需改 `stringResource(group.labelRes)`。
 
 ## 备案/版权（docs 站）
 
